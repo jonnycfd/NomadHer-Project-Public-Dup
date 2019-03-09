@@ -7,25 +7,16 @@ import { Container, Content, Header, Form, Input, Item, Button, Label} from 'nat
 import * as firebase from 'firebase';
 import { Navigation } from 'react-native-navigation';
 
-import CountDown from './feature_component/countdown.js'
-import TakePhoto from './feature_component/TakePhoto.js'
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyD5lrnpxS_2Kg__rx081B-uaXYLj_lgRG4",
+  authDomain: "nomadherd2.firebaseapp.com",
+  databaseURL: "https://nomadherd2.firebaseio.com",
+  projectId: "nomadherd2",
+  storageBucket: "nomadherd2.appspot.com",
+};
 
-function onFinish() {
-  console.log("Finish!")
-}
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Test, this is the login page.</Text>
-        <CountDown initCount={5} passIn={onFinish}/>
-        <TakePhoto />
-      </View>
-    )
-  }
-}
+firebase.initializeApp(firebaseConfig);
 
 export default class LogIn extends React.Component {
 
@@ -70,6 +61,14 @@ export default class LogIn extends React.Component {
     );
   }
 }
+
+
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {

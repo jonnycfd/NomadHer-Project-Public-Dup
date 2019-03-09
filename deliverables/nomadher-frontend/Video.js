@@ -10,7 +10,7 @@ export default class VideoComponent extends React.Component {
         <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Video Verification</Text>
           <Video
             source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-            // source={require('./assets/testvideo.mp4')}
+            // source={require('../assets/testvideo.mp4')}
             // ref={(ref) => {this.player = ref}}
             // onLoadStart={() => console.log('onStartload but can not see any component')}
             // onLoad={(response) => response_onload = response}
