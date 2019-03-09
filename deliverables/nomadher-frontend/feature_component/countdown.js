@@ -4,13 +4,23 @@ import { StyleSheet, Text, View } from 'react-native'
 export default class CountDown extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { countDown: this.props.initCount? this.props.initCount: 10}
+		this.state = { 
+			countDown: this.props.initCount? this.props.initCount: 10, 
+			finish: false,
+		}
 	}
 
 	componentDidMount() {
+		// Update the countdown value.
 		setInterval (() => {
-			if (this.state.countDown > 0) {
+			if (!this.state.finish) {
 				this.setState({countDown: this.state.countDown - 1})
+				
+				// Stop count down and excute the passin function.
+				if (this.state.countDown === 0) {
+					this.setState({finish: true})
+					this.props.passIn()
+				}
 			}
 		}, 1000)
 	}
