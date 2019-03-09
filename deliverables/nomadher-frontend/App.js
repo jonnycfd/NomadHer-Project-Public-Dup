@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import Video from 'react-native-video';
 import {Constants, Video} from 'expo'
-import VideoComponent from './Video.js'
+import VideoComponent from './feature_component/Video.js'
 import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
 import * as firebase from 'firebase';
+import { Navigation } from 'react-native-navigation';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -31,11 +32,11 @@ export default class App extends React.Component {
 }
 */
 
-export default class App extends Component {
+export default class LogIn extends React.Component {
 
   componentDidMount() {
 
-    firebase.auth().onAuthSateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         console.log(user)
       }
