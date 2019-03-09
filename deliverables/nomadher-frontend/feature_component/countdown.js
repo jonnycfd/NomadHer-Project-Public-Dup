@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default class CountDown extends Component {
-	state = {countDown: 10}
+	constructor(props) {
+		super(props)
+		this.state = { countDown: this.props.initCount? this.props.initCount: 10}
+	}
 
 	componentDidMount() {
 		setInterval (() => {
@@ -27,4 +30,3 @@ const styles = StyleSheet.create({
     fontSize: 140,
   },
 })
-
