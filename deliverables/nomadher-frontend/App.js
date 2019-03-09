@@ -1,5 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+import CountDown from './feature_component/countdown'
 
 export default class App extends React.Component {
   render() {
@@ -7,8 +9,9 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Test, this is the login page.</Text>
+        <CountDown />
       </View>
-    );
+    )
   }
 }
 
@@ -19,4 +22,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
