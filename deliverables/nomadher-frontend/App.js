@@ -21,7 +21,6 @@ firebase.initializeApp(firebaseConfig);
 export default class App extends React.Component {
   render() {
     return (
-
       // <View style={styles.container}>
       //   <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Video Verification</Text>
       <VideoComponent />
