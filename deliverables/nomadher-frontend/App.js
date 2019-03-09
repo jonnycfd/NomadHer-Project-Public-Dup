@@ -6,8 +6,6 @@ import VideoComponent from './Video.js'
 import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
 import * as firebase from 'firebase';
 
-import getTheme from './native-base-theme/components'; 
-
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD5lrnpxS_2Kg__rx081B-uaXYLj_lgRG4",
