@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
+import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
 import * as firebase from 'firebase';
+import { SocialIcon } from 'react-native-elements'
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -15,39 +16,52 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// function postUID() {
+//   const url = "0.0.0.0/api/login";
+//   let data = {
+//     "uid": user.providerData[0].uid
+//   }
+//   const request = new Request(url, {
+//     method: 'post',
+//     body: JSON.stringify(data),
+//     headers: {
+//       'Accept': 'application/json, text/plain, */*',
+//       'Content-Type': 'application/json'
+//     },
+//   });
+
+//   fetch(request)
+//     .then((res) => {
+//       console.log('Success')
+//       return res.json()
+//     })
+//     .then((jsonResult) => {
+//       console.log('Result:', jsonResult)
+//     }).catch((error) => {
+//       console.log("An error occured with fetch:", error)
+//     })
+// }
+
+
 export default class Login extends React.Component {
-  
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        console.log(user.providerData.uid)
+        console.log(user.providerData[0].uid)
       }
-
-      /*
-      var data = user.uid;
-     
-     fetch("0.0.0.0/api/login", {
-        method: "POST",
-        body: JSON.stringify(data)
-     })
-     .then(function(response){ 
-      return response.json();   
-     })
-     .then(function(data){ 
-     console.log(data)
-     });
-     */
-
     })
   }
 
-  async loginWithFacebook() {
-    const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync
-    ('2214679281946238', {permissions:['public_profile']})
 
-    if (type == 'success'){
+  async loginWithFacebook() {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
+      ('2214679281946238', { permissions: ['public_profile'] })
+
+    if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
-      firebase.auth().signInWithCredential(credential).catch((error) =>{
+      // this.postUID();
+      firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
       })
     }
@@ -55,20 +69,21 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
-        <Form>
-          <Button style={{mariginTop:10}}
-            full
-            rounded
-            primary
-            onPress={() => this.loginWithFacebook()}
-          >
-              <Text style={{ color: 'white' }}> Login With Facebook</Text>
-          </Button>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}>
+        <SocialIcon
+          title='Login With Facebook'
+          button
+          type='facebook'
+          full
+          onPress={() => this.loginWithFacebook()}
+        />
+      </View>
 
-        </Form>
-      
-      </Container>
+
     );
   }
 }
