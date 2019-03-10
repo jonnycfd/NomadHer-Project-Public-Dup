@@ -18,26 +18,25 @@ export default class App extends React.Component {
 	// Call this function when the countdown is finish.
 	onFinish = () => {
 		this.setState({takePhoto: true})
+    console.log(this.state.takePhoto)
 		console.log("Finish countdown!")
 	}
 
 	// Call this function after you got the photo.
-	processImg = (img) => {
-		// ... Do something with img.
+	processImg = img => {
+		// ... Do something with img. like send it out or something.
 		console.log(img)
 		this.setState({takePhoto: false})
 		console.log("Photo processing finished!")
 	}
 
 	render() {
-		const { takePhoto } = this.state
-
 		return (
 			<View style={styles.container}>
 				<Text>Open up App.js to start working on your app!</Text>
 				<Text>Test, this is the login page.</Text>
 				<CountDown initCount={10} passIn={this.onFinish} />
-				<TakePhoto takePhoto={takePhoto} process={this.processImg} />
+				<TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
 			</View>
 		)
 	}
