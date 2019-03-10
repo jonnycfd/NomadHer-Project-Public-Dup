@@ -12,6 +12,8 @@ db = firestore.client()
 def upload_img_pair(user_id, pose_id, user_uploaded_img):
     users_ref = db.collection('users')
     docs = users_ref.document(user_id).get().to_dict()
+    if not docs:
+        return {'status': 'error', 'message': 'User Not Found'}
     which_pose = "pose-1"
     # We assume front-end will NOT send back any pose_id other than what is assigned to user
     # so after if-statements which_pose will never be "pose-1" 
@@ -28,6 +30,8 @@ def upload_img_pair(user_id, pose_id, user_uploaded_img):
             "user_uploaded_img" : user_uploaded_img
             }
         })
+    
+    return {'status': 'success'}
 
 @api.route('/post_poses', methods=['POST'])
 def post_poses():
@@ -36,7 +40,7 @@ def post_poses():
     user_uploaded_img = data['user_uploaded_img']
     original_pose_id = data['original_pose_id']
 
-    upload_img_pair(user_id, original_pose_id, user_uploaded_img)
+    result = upload_img_pair(user_id, original_pose_id, user_uploaded_img)
 
     '''
     dict_object = {
@@ -46,4 +50,4 @@ def post_poses():
     }
     '''
 
-    return jsonify(data)
+    return jsonify(result)

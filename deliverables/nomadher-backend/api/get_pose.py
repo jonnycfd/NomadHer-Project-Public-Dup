@@ -29,7 +29,7 @@ def get_pose(user_id):
 
     user = db.document('users/' + user_id).get().to_dict()
     if not user:
-        return jsonify({'original_pose_id': used_image_id, 'image_uri': 'User not found', 'status': 'error'})
+        return jsonify(return {'status': 'error', 'message': 'User Not Found'})
 
     if user["pose1"]['user_uploaded_img'] == "None":
         used_image_id = int(user["pose1"]['pose_id'])
@@ -39,7 +39,7 @@ def get_pose(user_id):
         used_image_id = int(user["pose3"]['pose_id'])
 
     if used_image_id == 0:
-        return jsonify({'original_pose_id': used_image_id, 'image_uri': 'User Already Uploaded all Images', 'status': 'error'})
+        return jsonify({'status': 'error', 'message': 'User Already Uploaded all Images'})
     
     pose = db.document('pose/poseList').get().to_dict()
     posePhotoList = pose["posePhotoList"]
