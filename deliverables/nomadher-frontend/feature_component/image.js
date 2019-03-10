@@ -7,21 +7,30 @@ import {Constants} from 'expo'
 
 export default class SampleImage extends React.Component {
 
-  // async loginWithFacebook() {
-  //   const url = 'http://192.168.0.19:80/api/test';
+  constructor(props) {
+    super(props);
 
-  //   var result = await fetch(url);
-  // }
+    this.state = {
+      image: "",
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://192.168.0.19:80/api/test') //地址更具实际情况更改
+      .then(response => response.json())
+      .then(data => this.setState({ image: data.image_uri }));
+  }
 
 
   render() {
+  	const { image } = this.state;
     return (
       <View style={styles.container}>
         <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Sample Image</Text>
 
         <Image
           style={{width: "100%", height: "75%"}}
-          source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+          source={{uri: image}}
         />
         
       </View>
@@ -37,3 +46,48 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
+
+
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       image: "",
+//     };
+//   }
+
+//   componentDidMount() {
+//     fetch('http://192.168.0.19:80/api/test') //地址更具实际情况更改
+//       .then(response => response.json())
+//       .then(data => this.setState({ image: data.image_uri }));
+//   }
+
+//   render() {
+//     const { image } = this.state;
+//     return (
+//       <View style={styles.container}>
+//         <Image
+//               source={{uri: image}}
+//               style={styles.welcomeImage}
+//             />
+//         <Text>{image}</Text>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   welcomeImage: {
+//     width: 100,
+//     height: 80,
+//     resizeMode: 'contain',
+//     marginTop: 3,
+//     marginLeft: -10,
+//   },
+// });
