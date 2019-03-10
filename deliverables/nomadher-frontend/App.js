@@ -8,7 +8,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
 // import * as firebase from 'firebase';
 import Login from './feature_component/Login.js'
-// import { Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
+import {
+  createSwitchNavigator,
+  createAppContainer,
+  createDrawerNavigator,
+  createBottomTabNavigator,
+  createStackNavigator
+} from 'react-navigation';
 
 function onFinish() {
   console.log("Finish!")
@@ -32,13 +39,13 @@ export default class App extends React.Component {
   }
 }
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Login />
-    );
-  }
-}
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//       <Login />
+//     );
+//   }
+// }
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen: Login},
