@@ -7,28 +7,48 @@ import VideoComponent from './Video.js'
 import CountDown from './feature_component/countdown.js'
 import TakePhoto from './feature_component/TakePhoto.js'
 
-function onFinish() {
-  console.log("Finish!")
-}
-
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Test, this is the login page.</Text>
-        <CountDown initCount={5} passIn={onFinish}/>
-        <TakePhoto />
-      </View>
-    )
-  }
+	constructor(props) {
+		super(props)
+		this.state = {
+			takePhoto: false,
+		}
+	}
+	
+	// Call this function when the countdown is finish.
+	onFinish = () => {
+		this.setState({takePhoto: true})
+		console.log("Finish countdown!")
+	}
+
+	// Call this function after you got the photo.
+	processImg = (img) => {
+		// ... Do something with img.
+		console.log(img)
+		this.setState({takePhoto: false})
+		console.log("Photo processing finished!")
+	}
+
+	render() {
+		const { takePhoto } = this.state
+
+		return (
+			<View style={styles.container}>
+				<Text>Open up App.js to start working on your app!</Text>
+				<Text>Test, this is the login page.</Text>
+				<CountDown initCount={10} passIn={this.onFinish} />
+				<TakePhoto takePhoto={takePhoto} process={this.processImg} />
+			</View>
+		)
+	}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+		fontSize: 140,
+	}
 });
