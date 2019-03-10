@@ -15,11 +15,11 @@ def upload_img_pair(user_id, pose_id, user_uploaded_img):
     which_pose = "pose-1"
     # We assume front-end will NOT send back any pose_id other than what is assigned to user
     # so after if-statements which_pose will never be "pose-1" 
-    if(docs["pose1"]["pose_id"] == pose_id):
+    if(docs["pose1"]["pose_id"] == int(pose_id)):
         which_pose = "pose1"
-    if(docs["pose2"]["pose_id"] == pose_id):
+    if(docs["pose2"]["pose_id"] == int(pose_id)):
         which_pose = "pose2"
-    if(docs["pose3"]["pose_id"] == pose_id):
+    if(docs["pose3"]["pose_id"] == int(pose_id)):
         which_pose = "pose3"
     #print()
     users_ref.document(user_id).update(
