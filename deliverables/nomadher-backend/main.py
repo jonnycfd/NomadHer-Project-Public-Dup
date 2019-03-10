@@ -5,16 +5,42 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import db
+import random
 
 cred = credentials.Certificate("nomadherd2-firebase-adminsdk-1l2wh-a12557d542.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Try to create a set in database
-doc_ref = db.collection(u'users').document(u'user1')
-doc_ref.set({
-    u'fullName': u'Tom Kim'
-})
+def initialize_user(user_id):
+    doc_ref = db.collection('users').document(user_id)
+    random_int_list = random.sample(range(1, 10), 3)
+    doc_ref.set({
+        'user_id': user_id,
+        'verified': 'False',
+        'pose1':{
+            'pose_id': random_int_list[0],
+            'user_uploaded_img': 'None'
+        },
+        'pose2':{
+            'pose_id': random_int_list[1],
+            'user_uploaded_img': 'None'
+        },
+        'pose3':{
+            'pose_id': random_int_list[2],
+            'user_uploaded_img': 'None'
+        },
+        'this_users_photoID': 'None'
+    })
+
+initialize_user('user1')
+initialize_user('user2')
+initialize_user('user3')
+
+# doc_ref = db.collection(u'users').document(u'user1')
+# doc_ref.set({
+#     u'fullName': u'Tom Kim'
+# })
 
 # Try to get data from database
 users_ref = db.collection(u'users')
