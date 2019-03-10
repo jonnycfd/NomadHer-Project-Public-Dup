@@ -6,7 +6,7 @@ import { Camera, Permissions } from 'expo'
 // picture automatically.
 // This component takes two props:
 // 1. takePhoto: this is a boolean props, when it turn from false to true, it will
-// triger the camera to take a photo.
+// trigger the camera to take a photo.
 // 2. process: this is an unary function, passed in by the parent component. it will
 // be excuted after taking the photo. Which should use the photo as the input and 
 // do some process that difined by the parent component.

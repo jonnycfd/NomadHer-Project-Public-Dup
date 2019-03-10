@@ -1,56 +1,46 @@
 import React from 'react';
-import TakePhoto from './feature_component/TakePhoto.js'
 import { StyleSheet, Text, View } from 'react-native';
 // import Video from 'react-native-video';
-// import {Constants, Video} from 'expo'
-// import VideoComponent from './feature_component/Video.js'
 import {Constants, Video} from 'expo'
-import VideoComponent from './feature_component/Video.js'
-import Login from './feature_component/Login.js'
+import VideoComponent from './Video.js'
+
 import CountDown from './feature_component/countdown.js'
-import Hello from './feature_component/hello.js'
-import SampleImage from './feature_component/image.js'
-// import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
-// import * as firebase from 'firebase';
-import { Navigation } from 'react-native-navigation';
-import {
-  createSwitchNavigator,
-  createAppContainer,
-  createDrawerNavigator,
-  createBottomTabNavigator,
-  createStackNavigator
-} from 'react-navigation';
-
-
+import TakePhoto from './feature_component/TakePhoto.js'
 
 export default class App extends React.Component {
-  render() {
-    return (
-      // <View style={styles.container}>
-        // <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Video Verification</Text>
-        // <VideoComponent />
-        
-      // </View>
-      // <CountDown />
-      <SampleImage />
-      // <Login />
-      // <Hello />
+	constructor(props) {
+		super(props)
+		this.state = {
+			takePhoto: false,
+		}
+	}
+	
+	// Call this function when the countdown is finish.
+	onFinish = () => {
+		this.setState({takePhoto: true})
+    console.log(this.state.takePhoto)
+		console.log("Finish countdown!")
+	}
 
-      // <AppContainer />
-      
-    )
-      
-  }
+	// Call this function after you got the photo.
+	processImg = img => {
+		// ... Do something with img. like send it out or something.
+		console.log(img)
+		this.setState({takePhoto: false})
+		console.log("Photo processing finished!")
+	}
+
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text>Open up App.js to start working on your app!</Text>
+				<Text>Test, this is the login page.</Text>
+				<CountDown initCount={10} passIn={this.onFinish} />
+				<TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
+			</View>
+		)
+	}
 }
-
-
-const AppSwitchNavigator = createSwitchNavigator({
-  Login:{screen: Login},
-  hello:{screen: Hello},
-  countdown:{screen: CountDown}
-});
-
-const AppContainer = createAppContainer(AppSwitchNavigator);
 
 const styles = StyleSheet.create({
 	container: {
