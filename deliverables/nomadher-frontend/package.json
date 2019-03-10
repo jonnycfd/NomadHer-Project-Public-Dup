@@ -9,6 +9,7 @@
   "dependencies": {
     "expo": "^32.0.0",
     "expo-camera": "^3.0.0",
+    "expo-cli": "^2.11.7",
     "firebase": "^5.8.6",
     "native-base": "^2.12.1",
     "react": "16.5.0",
@@ -17,7 +18,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
     "react-native-navigation": "^2.13.1",
-    "react-native-video": "^4.4.0"
+    "react-native-video": "^4.4.0",
+    "react-navigation": "^3.3.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
