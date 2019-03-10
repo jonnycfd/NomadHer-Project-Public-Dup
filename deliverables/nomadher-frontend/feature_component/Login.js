@@ -16,6 +16,16 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+
+function postUID() {
+  // let data = {
+  //   "uid": user.providerData[0].uid
+  // }
+  console.log('ccc')
+  // console.log(data)
+  console.log('ddd')
+}
+
 // function postUID() {
 //   const url = "0.0.0.0/api/login";
 //   let data = {
@@ -48,7 +58,36 @@ export default class Login extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        console.log(user.providerData[0].uid)
+        // console.log(user.providerData[0].uid)
+        const url = "http://0.0.0.0:80/"; // need up data
+        console.log('aaa')
+        let data = {
+          "uid": user.providerData[0].uid
+        }
+        console.log(data)
+
+
+        const request = new Request(url, {
+          method: 'post',
+          body: JSON.stringify(data),
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+        });
+
+        fetch(request)
+          .then((res) => {
+            console.log('Success')
+            return res.json()
+          })
+          .then((jsonResult) => {
+            console.log('Result:', jsonResult)
+          }).catch((error) => {
+            console.log("An error occured with fetch:", error)
+          })
+
+        console.log('bbb')
       }
     })
   }
