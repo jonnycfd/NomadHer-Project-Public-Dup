@@ -23,10 +23,10 @@ def addPhotoID():
 
     if (check_user == 0):
         print("Wrong user_id, please register first.")
-        return jsonify({})
+        return jsonify({'status': 'error', 'message': 'User Not Found'})
 
     # Update the "this_users_photoID" for the user
     users_ref = db.collection('users').document(data["user_id"])
     users_ref.update({"this_users_photoID":data["photo_id_uri"]})
 
-    return jsonify({"user_id":data["user_id"], "photo_id_uri":data["photo_id_uri"]})
+    return jsonify({'status': 'success'})

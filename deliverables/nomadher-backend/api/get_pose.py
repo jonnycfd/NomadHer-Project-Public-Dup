@@ -25,28 +25,27 @@ def test():
 # /api/
 @api.route('/get_pose/<string:user_id>')
 def get_pose(user_id):
-    user = db.document('user/' + user_id).get().to_dict()
-    used_image_ids = []
+    used_image_id = 0
 
-    if 'pose1' in user:
-        used_image_id = user["pose1"]['pose_id']
-        used_image_ids.append(used_image_id)
-    if 'pose2' in user:
-        used_image_id = user["pose2"]['pose_id']
-        used_image_ids.append(used_image_id)
-    if 'pose3' in user:
-        used_image_id = user["pose3"]['pose_id']
-        used_image_ids.append(used_image_id)
+    user = db.document('users/' + user_id).get().to_dict()
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User Not Found'})
 
+    if user["pose1"]['user_uploaded_img'] == "None":
+        used_image_id = int(user["pose1"]['pose_id'])
+    elif user["pose2"]['user_uploaded_img'] == "None":
+        used_image_id = int(user["pose2"]['pose_id'])
+    elif user["pose3"]['user_uploaded_img'] == "None":
+        used_image_id = int(user["pose3"]['pose_id'])
 
+    if used_image_id == 0:
+        return jsonify({'status': 'error', 'message': 'User Already Uploaded all Images'})
+    
     pose = db.document('pose/poseList').get().to_dict()
     posePhotoList = pose["posePhotoList"]
 
-    while (1):
-        image_obj = random.choice(posePhotoList)
-        if (image_obj['pose_id'] not in used_image_ids):
-            break
+    image_obj = posePhotoList[used_image_id - 1]
             
     pose_img_uri = image_obj['pose_img_uri']
     
-    return jsonify({'image_uri': pose_img_uri})
+    return jsonify({'original_pose_id': used_image_id,'image_uri': pose_img_uri, 'status': 'success'})
