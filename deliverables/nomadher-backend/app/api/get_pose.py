@@ -6,7 +6,7 @@ from firebase_admin import firestore
 from firebase_admin import db
 import random
 
-cred = credentials.Certificate("nomadherd2-firebase-adminsdk-1l2wh-a12557d542.json")
+# cred = credentials.Certificate("nomadherd2-firebase-adminsdk-1l2wh-a12557d542.json")
 db = firestore.client()
 
 # /api/
