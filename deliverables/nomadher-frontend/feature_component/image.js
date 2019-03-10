@@ -16,7 +16,7 @@ export default class SampleImage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.0.19:80/api/test') //地址更具实际情况更改
+    fetch('http://100.64.89.154:80/api/test') //地址更具实际情况更改
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
   }
