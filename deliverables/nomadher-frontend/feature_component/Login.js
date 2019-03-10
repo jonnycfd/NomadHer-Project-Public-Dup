@@ -17,56 +17,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-function postUID() {
-  // let data = {
-  //   "uid": user.providerData[0].uid
-  // }
-  console.log('ccc')
-  // console.log(data)
-  console.log('ddd')
-}
-
-// function postUID() {
-//   const url = "0.0.0.0/api/login";
-//   let data = {
-//     "uid": user.providerData[0].uid
-//   }
-//   const request = new Request(url, {
-//     method: 'post',
-//     body: JSON.stringify(data),
-//     headers: {
-//       'Accept': 'application/json, text/plain, */*',
-//       'Content-Type': 'application/json'
-//     },
-//   });
-
-//   fetch(request)
-//     .then((res) => {
-//       console.log('Success')
-//       return res.json()
-//     })
-//     .then((jsonResult) => {
-//       console.log('Result:', jsonResult)
-//     }).catch((error) => {
-//       console.log("An error occured with fetch:", error)
-//     })
-// }
-
-
 export default class Login extends React.Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logInStatus: 'signed out',
+      errorMessage: 'none'
+    };
+  }
+
+  componentDidUpdate() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         // console.log(user.providerData[0].uid)
-        const url = "http://0.0.0.0:80/"; // need up data
-        console.log('aaa')
+        const url = "https://team5-nomadher-api.herokuapp.com/api/login";
         let data = {
-          "uid": user.providerData[0].uid
+          "user_id": user.providerData[0].uid
         }
-        console.log(data)
-
-
         const request = new Request(url, {
           method: 'post',
           body: JSON.stringify(data),
@@ -87,11 +56,12 @@ export default class Login extends React.Component {
             console.log("An error occured with fetch:", error)
           })
 
-        console.log('bbb')
-      }
+          
+
+
+      } 
     })
   }
-
 
   async loginWithFacebook() {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
@@ -99,10 +69,10 @@ export default class Login extends React.Component {
 
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
-      // this.postUID();
       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
       })
+      this.setState({logInStatus:'signed in'})
     }
   }
 
@@ -121,12 +91,9 @@ export default class Login extends React.Component {
           onPress={() => this.loginWithFacebook()}
         />
       </View>
-
-
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
