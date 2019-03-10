@@ -13,6 +13,13 @@ db = firestore.client()
 
 
 def check_user_exist(user_id):
+    '''
+    Check if a certain user exist or not in the database
+
+
+    :param user_id: The user_id of the user we are looking for
+    :return: True if the user exists, false if the user does not exists
+    '''
     users_ref = db.collection('users')
     docs = users_ref.get()
     for doc in docs:
@@ -23,6 +30,12 @@ def check_user_exist(user_id):
     return False
 
 def get_user_dict(user_id):
+    '''
+    Get a certain user's information from the database
+
+    :param user_id: The user_id of the user we are looking for
+    :return: The user's info in the format of a python dictionary object
+    '''
     users_ref = db.collection(u'users')
     docs = users_ref.get()
     for doc in docs:
@@ -31,6 +44,12 @@ def get_user_dict(user_id):
     return False
 
 def initialize_user(user_id):
+    '''
+    create a new user in the database
+
+    :param user_id: The user_id of the newly created user
+    :return: None
+    '''
     doc_ref = db.collection('users').document(user_id)
     random_int_list = random.sample(range(1, 10), 3)
     doc_ref.set({
@@ -52,6 +71,13 @@ def initialize_user(user_id):
     })
 
 def check_user_verified(user_id):
+    '''
+    Check the verification status of the given user
+
+    :param user_id: The user_id of the user we are looking for
+    :return: The verification status of the given user if the user exist,
+             String "User does not exist" otherwise.
+    '''
     users_ref = db.collection('users')
     docs = users_ref.get()
     for doc in docs:
