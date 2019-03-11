@@ -9,8 +9,9 @@
 
 #### Roles & responsibilities
 
-- Pufan Zhao:
-    Role: Team Leader, Programmer, and Tester (front end).
+1. Pufan Zhao:
+
+Role: Team Leader, Programmer, and Tester (front end).
     
 Responsibilities: 1. Write the login page for our application. 2. Write iteration-02.plan.md and iteration-02.review.md
 
@@ -19,8 +20,9 @@ Strengths:  1. Have experience with Python and other programming languages. 2. H
 Weaknesses: 1. Don’t have any experience with React Native framework. 2. Don’t have any experience with Mobile App development. 3. Don’t have any experience with Firebase database.
 
 
-- Jiayan Kong:
-    Role: Programmer and Tester (back end)
+2. Jiayan Kong:
+
+Role: Programmer and Tester (back end)
 
 Responsibilities: 1. Connect the backend to the Firebase database and provide examples of adding and getting data.2. Write the function for storing photoID. 3. Mainly responsible for writing iteration-02.plan.md and iteration-02.review.md
     
@@ -28,7 +30,8 @@ Strengths:  1. Have experience with JAVA and other programming languages. 2. Hav
 
 Weaknesses: 1. Don’t have any experience with React Native framework. 2. Don’t have any experience with Firebase database. 3. Limited knowledge and experience for Mobile App development.
 
-- Chengli Wu:
+3. Chengli Wu:
+
 Role: Programmer and Tester  (front end)
     
 Responsibilities: Write the countdown function and allow users to take photos for verification
@@ -37,7 +40,8 @@ Strengths: 1. Have experience with JAVA and SQL database operation. 2. Familiar 
 
 Weakness: 1. Do not have experience on React Native framework 2. Do not have mobile app development experience.
 
-- Rui Cong:
+4. Rui Cong:
+
 Role: Programmer and Tester  (back end).
 
 Responsibilities: 1. Design the database schema 2. Write the function that store data when the users log in 3. Mainly responsible for writing README.md 
@@ -46,7 +50,9 @@ Strengths: 1. Experience with Javascript and NPM. 2. Familiar with SQL database 
 
 Weakness:  1. Limited knowledge on React Native framework. 2. Limited knowledge on Mobile App development. 3. Don’t have any experience with Firebase database.
 
-- Jia Nian Dong:Role: Programmer, Tester & Designer (back end)
+5. Jia Nian Dong:
+
+Role: Programmer, Tester & Designer (back end)
             
 Responsibilities:1. Design the structure of JSON object which communicates with the front end 2. Write the function that stores verification photos that users uploaded. 3. Contributed in writing iteration-02-review, and README.md
 
@@ -54,7 +60,9 @@ Strengths: 1. Experienced with Javascript & python 2. Efficiency in time managem
 
 Weakness:  1. Do not have experience on React Native framework. 2. Do not have experience on Firebase. 3. Not very efficient in SQL query writing.
 
-- Lixuan Luo: Role: Programmer, Tester and Designer (front end)
+6. Lixuan Luo: 
+
+Role: Programmer, Tester and Designer (front end)
     
 Responsibilities: Design the UI and the connection between the interfaces
 
@@ -62,8 +70,9 @@ Strength: 1. Experienced with web development(JS, Python) 2. Familiar with JAVA 
     
 Weakness: 1. Do not have experience with React Native framework. 2. Limited knowledge of Mobile App development. 3. Sometimes make careless mistakes
 
-- Zidong Xie:
-    Role: Programmer and Tester (back end)
+7. Zidong Xie:
+
+Role: Programmer and Tester (back end)
     
 Responsibilities: 1.Learn about using Firebase with Python, and share useful files with the team 2. Write the function that randomly retrieves action photos from the database 
     
@@ -73,17 +82,17 @@ Weakness: 1. Limited knowledge on Mobile App development. 2. Don’t have any ex
 
 #### Team Rules
 
-- Communications:
+##### Communications:
 
 The expected communication frequency is at least once a week. Mainly through the WeChat tool, which can send text messages, files, pictures and conducts video meetings.
 
 We have a partner project. We have a voice conference via Zoom (an online video chat app) or a text conference via Slack (an online chat app) with the NomadHer company every week for an hour. The specific date of a meeting is determined by mail communication of that week. Whenever we have problems, we will also ask us questions via Slack and look forward to responses. There will be 2 team members attending the meeting every week, which is determined by everyone's schedule. And they will record the important part of the meeting and share it with other members through WeChat.
  
-- Meetings:
+##### Meetings:
 
 At this stage, we divided our team into a four-person back-end team and a three-person front-end team. Each team arranged the time and place of the meeting according to the members' schedule (usually take voice calls through WeChat, or directly meet at Bahen centre). During the meeting, the team will assign tasks to each member, and after each complete their own work the team will gather together to view and discuss.
  
-- Conflict Resolution:
+##### Conflict Resolution:
 
 Scenario 1. The team wants to gather in a place and do some work, but can't find a valid time and place for all members.
 
