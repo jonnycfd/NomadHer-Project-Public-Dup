@@ -7,28 +7,107 @@
 
 ## Process
 
-(Optional:) Quick introduction
-
 #### Roles & responsibilities
 
-Describe the different roles on the team and the responsibilities associated with each role. 
- * Roles should reflect the structure of your team and be appropriate for your project. Not necessarily one role to one team member.
+Pufan Zhao:
+    Role: Team Leader, Programmer, and Tester (front end).
+    Responsibilities: 1. Write the login page for our application.
+                2. Write iteration-02.plan.md and iteration-02.review.md
+    Strengths:  1. Have experience with Python and other programming languages.
+                2. Have experience with SQL.
+                3. Have working experience with software tester.
+    Weaknesses: 1. Don’t have any experience with React Native framework.
+                2. Don’t have any experience with Mobile App development.
+                3. Don’t have any experience with Firebase database.
 
-List each team member and:
- * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
- * 3 technical strengths and weaknesses each (e.g. languages, frameworks, libraries, development methodologies, etc.)
+Jiayan Kong:
+    Role: Programmer and Tester (back end)
+            Responsibilities: 
+1. Connect the backend to the Firebase database and provide examples of adding and getting data.
+2. Write the function for storing photoID. 
+3. Mainly responsible for writing iteration-02.plan.md and iteration-02.review.md
+    Strengths:  1. Have experience with JAVA and other programming languages.
+                2. Have experience with databases such as MongoDB.
+                3. Have knowledge about data structure and design pattern.
+    Weaknesses: 1. Don’t have any experience with React Native framework.
+                2. Don’t have any experience with Firebase database.
+                3. Limited knowledge and experience for Mobile App development.
+
+Chengli Wu:
+    Role: Programmer and Tester  (front end)
+    Responsibilities: 
+Write the countdown function and allow users to take photos for verification
+Strengths: 
+1. Have experience with JAVA and SQL database operation.
+              2. Familiar with different data structure and design pattern.
+Weakness: 
+1. Do not have experience on React Native framework
+               2. Do not have mobile app development experience.
+
+Rui Cong:
+Role: Programmer and Tester  (back end).
+Responsibilities: 
+1. Design the database schema
+2. Write the function that store data when the users log in
+3. Mainly responsible for writing README.md 
+    Strengths: 1. Experience with Javascript and NPM.
+               2. Familiar with SQL database
+               3. Knowledge in different data structures
+    Weakness:  1. Limited knowledge on React Native framework.
+               2. Limited knowledge on Mobile App development.
+               3. Don’t have any experience with Firebase database.
+
+Jia Nian Dong:
+    Role: Programmer, Tester & Designer (back end)
+            Responsibilities:
+1. Design the structure of JSON object which communicates with the front end
+2. Write the function that stores verification photos that users uploaded. 
+3. Contributed in writing iteration-02-review, and README.md
+    Strengths: 1. Experienced with Javascript & python 
+               2. Efficiency in time management & project planning.
+               3. Experienced in mobile app designing & UI/UX development.
+    Weakness:  1. Do not have experience on React Native framework.
+               2. Do not have experience on Firebase.
+               3. Not very efficient in SQL query writing.
+
+Lixuan Luo:
+    Role: Programmer, Tester and Designer (front end)
+    Responsibilities: 
+Design the UI and the connection between the interfaces
+Compiled the countdown function and the ability to take photos
+    Strength: 1. Experienced with web development(JS, Python)
+            2. Familiar with JAVA and database design and implementation.
+            3. Interested and have experience in UI/UX design.
+            4. Good at communication.
+    Weakness: 1. Do not have experience with React Native framework.
+                2. Limited knowledge of Mobile App development.
+                3. Sometimes make careless mistakes
+
+Zidong Xie:
+    Role: Programmer and Tester (back end)
+    Responsibilities:  
+Learn about using Firebase with Python, and share useful files with the team
+      2. Write the function that randomly retrieves action photos from the database 
+    Strength: 1. Experienced with web frontend and backend design.
+            2. Familiar with some web frameworks such as Vue and Flask
+            3. knowledged on common used database such as MySQL and MongoDB.
+    Weakness: 1. Limited knowledge on Mobile App development.
+               2. Don’t have any experience with Firebase database.
 
 #### Team Rules
 
-Communications:
+- Communications:
+
 The expected communication frequency is at least once a week. Mainly through the WeChat tool, which can send text messages, files, pictures and conducts video meetings.
 
 We have a partner project. We have a voice conference via Zoom (an online video chat app) or a text conference via Slack (an online chat app) with the NomadHer company every week for an hour. The specific date of a meeting is determined by mail communication of that week. Whenever we have problems, we will also ask us questions via Slack and look forward to responses. There will be 2 team members attending the meeting every week, which is determined by everyone's schedule. And they will record the important part of the meeting and share it with other members through WeChat.
  
-Meetings:
+- Meetings:
+
 At this stage, we divided our team into a four-person back-end team and a three-person front-end team. Each team arranged the time and place of the meeting according to the members' schedule (usually take voice calls through WeChat, or directly meet at Bahen centre). During the meeting, the team will assign tasks to each member, and after each complete their own work the team will gather together to view and discuss.
  
-Conflict Resolution:
+- Conflict Resolution:
+
 Scenario 1. The team wants to gather in a place and do some work, but can't find a valid time and place for all members.
 
 Choose a time and place that is possible for the majority of team. When we meet, make the necessary records and send them to the members who are not present, so that they can keep up with the latest developments of our project. Members who are not present should also finish their work at home.
