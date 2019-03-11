@@ -39,11 +39,11 @@ export default class App extends React.Component {
           // onPress={() => this.props.navigation.navigate('sampleimage')}
       // />
 
-      // <AppContainer />
-      <View style={styles.container}>
-      <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Camera</Text>
-      <TakePhotoCountDown />
-      </View>
+      <AppContainer />
+      // <View style={styles.container}>
+      // <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Camera</Text>
+      // <TakePhotoCountDown />
+      // </View>
       
     )
       
@@ -71,16 +71,41 @@ class Login extends React.Component {
     };
   }
 
-  componentUpdateMount() {
+  componentDidUpdate() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        console.log(user.providerData[0].uid)
-        if (this.state.logInStatus == "signed in") {
-        // console.log("222222222222") 
-        // this.props.navigation.navigate('hello')
-        console.log("11111111111")
-      }
-      }
+        const url = "https://team5-nomadher-api.herokuapp.com/api/login";
+        let data = {
+          "user_id": user.providerData[0].uid
+        }
+        console.log(data)
+        const request = new Request(url, {
+          method: 'post',
+          body: JSON.stringify(data),
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+        });
+
+        fetch(request)
+          .then((res) => {
+            console.log('Success')
+            return res.json()
+          })
+          .then((jsonResult) => {
+            console.log('Result:', jsonResult)
+            if (jsonResult.verified.status == 'False'){
+              this.props.navigation.navigate('hello')
+
+            } 
+          }).catch((error) => {
+            console.log("An error occured with fetch:", error)
+          })
+
+          // this.props.navigation.navigate('hello')
+          // if (jsonResult.verified.status)
+      } 
     })
   }
 
@@ -93,7 +118,7 @@ class Login extends React.Component {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
       // this.postUID();
       console.log("aaaaaaaaaaaa");
-      this.props.navigation.navigate('hello')
+      // 
 
       this.setState({logInStatus: 'signed in'})
       console.log("bbbbbbbbbbbbb");
