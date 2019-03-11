@@ -1,14 +1,11 @@
-# YOUR PRODUCT/TEAM NAME
-Nomadher / Team 05
+# Team 5- NomadHer
 
-
-## Iteration XX - Review & Retrospect
+## Iteration 02 - Review & Retrospect
  * When: 1:00 PM, March 9, 2019
  * Where: BA2240 
 
 
 ## Process - Reflection
-(Optional) Short introduction
 
 
 #### Decisions that turned out well
