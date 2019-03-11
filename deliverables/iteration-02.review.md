@@ -46,13 +46,14 @@ In this iteration, we were facing a tight timeline, the next deliverable may req
 #### Goals and/or tasks that were planned but not met/completed:
 
 1. Have not implemented video verification. (Temporarily used photo verification, and we will try to upgrade to use video in future developments)
-2. Have not implemented 
+
+2. Have not implemented the part where Master account users can manually compare and verify users' identities.
 
 
 ## Meeting Highlights
 
 1. More frequent team meeting.
 2. faster development cycle
-3. 
+3. More meeting with Nomadher team.
 
 
