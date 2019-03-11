@@ -26,26 +26,7 @@ import { SocialIcon } from 'react-native-elements'
 export default class App extends React.Component {
   render() {
     return (
-      // <View style={styles.container}>
-        // <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Video Verification</Text>
-        // <VideoComponent />
-        
-      // </View>
-      // <CountDown />
-      // <SampleImage />
-      // <View style={styles.container}>
-      // <Hello />
-      // </View>
-      // <Button title="verification"
-          // onPress={() => this.props.navigation.navigate('sampleimage')}
-      // />
-
-      <AppContainer />
-      // <View style={styles.container}>
-      // <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Camera</Text>
-      // <TakePhotoCountDown />
-      // </View>
-      
+      <AppContainer />      
     )
       
   }
@@ -79,7 +60,7 @@ class Login extends React.Component {
         let data = {
           "user_id": user.providerData[0].uid
         }
-        console.log(data)
+
         const request = new Request(url, {
           method: 'post',
           body: JSON.stringify(data),
@@ -88,15 +69,12 @@ class Login extends React.Component {
             'Content-Type': 'application/json'
           },
         });
-
+        
         fetch(request)
           .then((res) => {
-            console.log('Success')
             return res.json()
           })
           .then((jsonResult) => {
-            console.log('Result:', jsonResult)
-
             // when the user does not do the verification 
             if (jsonResult.verified.status == 'False'){
               this.props.navigation.navigate('hello')
@@ -108,15 +86,13 @@ class Login extends React.Component {
               this.props.navigation.navigate('welcome')
             }
 
+            // when this user's verification is under review
             else {
               this.props.navigation.navigate('pending')
             }
           }).catch((error) => {
             console.log("An error occured with fetch:", error)
           })
-
-          // this.props.navigation.navigate('hello')
-          // if (jsonResult.verified.status)
       } 
     })
   }
@@ -128,12 +104,9 @@ class Login extends React.Component {
 
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
-      // this.postUID();
-      console.log("aaaaaaaaaaaa");
-      // 
 
       this.setState({logInStatus: 'signed in'})
-      console.log("bbbbbbbbbbbbb");
+
       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
       })
@@ -161,6 +134,9 @@ class Login extends React.Component {
   }
 }
 
+
+
+// =================================Hello page===============================
 class Hello extends React.Component {
   render() {
     return (
@@ -175,7 +151,9 @@ class Hello extends React.Component {
   }
 }
 
-
+// =============================Display the sampe image===========================
+// In this page, there will be three-second countdown, and after the count down, the camera 
+// will automatically take a photo.
 class SampleImage extends React.Component {
 
   constructor(props) {
@@ -187,7 +165,7 @@ class SampleImage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://100.64.89.154:80/api/test') //地址更具实际情况更改
+    fetch('http://100.64.89.154:80/api/test') 
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
   }
@@ -203,16 +181,19 @@ class SampleImage extends React.Component {
           style={{width: "100%", height: "75%"}}
           source={{uri: image}}
         />
+
+        <Button title="take photo"
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown')}
+        />
         
       </View>
     )
-//     setTimeout(() => {
-//     this.props.navigation.navigate('hello'); //this.props.navigation.navigate('Login')
-// }, 500); 
   }
 }
 
 
+// ===============================Take photo page============================
+// in this page, the user will be displayed with the photo that he took
 class TakePhotoCountDown extends React.Component {
   constructor(props) {
     super(props)
@@ -225,17 +206,13 @@ class TakePhotoCountDown extends React.Component {
   // Call this function when the countdown is finish.
   onFinish = () => {
     this.setState({takePhoto: true})
-    console.log(this.state.takePhoto)
-    console.log("Finish countdown!")
   }
 
   // Call this function after you got the photo.
   processImg = img => {
-    // ... Do something with img. like send it out or something.
     this.state.image_uri = img.base64
-    console.log(this.state.image_uri)
     this.setState({takePhoto: false})
-    console.log("Photo processing finished!")
+    this.props.navigation.navigate('photo',{imageData:img.base64})
   }
 
   render() {
@@ -244,20 +221,47 @@ class TakePhotoCountDown extends React.Component {
         <Text>Test, this is the login page.</Text>
         <CountDown initCount={3} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
-        {console.log("hihihiihi")}
-        {console.log(this.state.takePhoto)}
+        
       </View>
     )
   }
 }
 
+
+//============================== display your photo===============================
+class Photo extends React.Component {
+
+  render() {
+    const imageData = this.props.navigation.getParam('imageData','No_image_data')
+    return (
+      <View style={styles.container}>
+        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your Photo</Text>
+
+        <Image
+          style={{width: "100%", height: "75%"}}
+          source={{uri: 'data:image/png;base64,' + imageData}}
+        />
+
+        <Button title="Next"
+          onPress={() => this.props.navigation.navigate('pending')}
+        />
+        
+      </View>
+    )
+  }
+}
+
+
+// =========================navigation module for screen change=======================
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen: Login},
   hello:{screen: Hello},
   countdown:{screen: CountDown},
   sampleimage:{screen: SampleImage},
+  takePhotoCountDown:{screen: TakePhotoCountDown},
   welcome:{screen:VideoComponent},
-  pending:{screen:Pending}
+  pending:{screen:Pending},
+  photo:{screen:Photo}
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);

@@ -34,9 +34,7 @@ export default class TakePhoto extends React.Component {
 			if (this.camera) {
 				let img = await this.camera.takePictureAsync({base64: true})
 				this.props.process(img)
-				console.log("i am here")
 			}
-			// console.log("get called")
 		}
 	}
 
@@ -54,7 +52,7 @@ export default class TakePhoto extends React.Component {
 						ref={ref => { this.camera = ref }}
 						type={this.state.type} 
 						autoFocus={ this.state.autoFocus }
-						style={{width: 500, aspectRatio: 0.8}}> 
+						style={{width: 400, aspectRatio: 0.8}}> 
 						<View> 
 							<TouchableOpacity 
 								onPress={() => {
