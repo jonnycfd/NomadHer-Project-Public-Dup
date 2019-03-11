@@ -10,7 +10,7 @@ import { Camera, Permissions } from 'expo'
 // 2. process: this is an unary function, passed in by the parent component. it will
 // be excuted after taking the photo. Which should use the photo as the input and 
 // do some process that difined by the parent component.
-export default class TakePhoto extends Component {
+export default class TakePhoto extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -34,8 +34,10 @@ export default class TakePhoto extends Component {
 			if (this.camera) {
 				let img = await this.camera.takePictureAsync()
 				this.props.process(img)
+				console.log("i am here")
+				console.log(img)
 			}
-			console.log("get called")
+			// console.log("get called")
 		}
 	}
 
@@ -52,7 +54,8 @@ export default class TakePhoto extends Component {
 					<Camera 
 						ref={ref => { this.camera = ref }}
 						type={this.state.type} 
-						autoFocus={ this.state.autoFocus }> 
+						autoFocus={ this.state.autoFocus }
+						style={{width: 500, aspectRatio: 0.8}}> 
 						<View> 
 							<TouchableOpacity 
 								onPress={() => {
@@ -67,6 +70,7 @@ export default class TakePhoto extends Component {
 								</Text>
 							</TouchableOpacity>
 						</View>
+
 					</Camera>
 				</View>
 			)

@@ -7,6 +7,7 @@ import {Constants} from 'expo'
 
 export default class SampleImage extends React.Component {
 
+  // use the asynchronous function to get a sample image from database then render.
   constructor(props) {
     super(props);
 
