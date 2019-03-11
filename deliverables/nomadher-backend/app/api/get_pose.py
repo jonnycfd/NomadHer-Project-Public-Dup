@@ -12,21 +12,29 @@ db = firestore.client()
 # /api/
 @api.route('/test')
 def test():
+    '''
+    This function is for test purpose. It will return an image url to the frontend
+    '''
+    # get image data from database 
     pose = db.document('pose/poseList').get().to_dict()
     posePhotoList = pose["posePhotoList"]
 
+    # take out the image url from the return object
     image_obj = random.choice(posePhotoList)
     pose_img_uri = image_obj['pose_img_uri']
     pose_id = image_obj['pose_id']
-    # print(pose_img_uri)
-    # print(pose_id)
+
     return jsonify({'image_uri': pose_img_uri})
 
 # /api/
 @api.route('/get_pose/<string:user_id>')
 def get_pose(user_id):
+    '''
+    This function will return a json includes image url and an image id
+    '''
     used_image_id = 0
 
+    # validate the incoming user 
     user = db.document('users/' + user_id).get().to_dict()
     if not user:
         return jsonify({'status': 'error', 'message': 'User Not Found'})
@@ -41,11 +49,12 @@ def get_pose(user_id):
     if used_image_id == 0:
         return jsonify({'status': 'error', 'message': 'User Already Uploaded all Images'})
     
+    # get image data from database 
     pose = db.document('pose/poseList').get().to_dict()
     posePhotoList = pose["posePhotoList"]
 
+    # take out the image url from the return object
     image_obj = posePhotoList[used_image_id - 1]
-            
     pose_img_uri = image_obj['pose_img_uri']
     
     return jsonify({'original_pose_id': used_image_id,'image_uri': pose_img_uri, 'status': 'success'})

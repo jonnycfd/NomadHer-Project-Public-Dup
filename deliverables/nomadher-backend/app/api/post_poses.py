@@ -23,15 +23,33 @@ def upload_img_pair(user_id, pose_id, user_uploaded_img):
         which_pose = "pose2"
     if(docs["pose3"]["pose_id"] == int(pose_id)):
         which_pose = "pose3"
-    #print()
+    
     users_ref.document(user_id).update(
         {which_pose : 
             {"pose_id" : pose_id, 
             "user_uploaded_img" : user_uploaded_img
             }
         })
-    
+
     return {'status': 'success'}
+
+def check_pending(user_id):
+    """
+    If all three required photos are uploaded to this user's db, change verified status to 'Pending'.
+    """
+    users_ref = db.collection('users')
+    docs = users_ref.document(user_id).get().to_dict()
+    if docs["verified"] is not "False":
+        return
+    else:
+        users_ref.document(user_id).update({"verified" : "Pending"})
+    
+    # print(docs)
+    for doc in docs :
+        #print(docs[doc])
+        if "pose" in doc and docs[doc]["user_uploaded_img"] == "None" :
+            users_ref.document(user_id).update({"verified" : "False"})
+
 
 @api.route('/post_poses', methods=['POST'])
 def post_poses():
@@ -41,7 +59,7 @@ def post_poses():
     original_pose_id = data['original_pose_id']
 
     result = upload_img_pair(user_id, original_pose_id, user_uploaded_img)
-
+    check_pending(user_id)
     '''
     dict_object = {
         'user_id' : user_id,
