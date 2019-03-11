@@ -7,26 +7,50 @@
 
 
 ## Key Features
+	For this part of the project, we implement the login part and verification part. The login part uses the Facebook login which requires the user to input his Facebook account and password. After the login, the user is supposed to do the image verification. 
+		1. If the user has already finished the verification, then he will be directed to a welcome page. 
+		2. If the user has taken the verification photo but is still under review, then the user will be directed to a pending page.
+		3. If the user has not done the verification, then the user will be directed to the verification page.
 
-	The features that we have already implemented are the login function and the verification function. The login function is implemented by using facebook’s login api: each user will be using her own facebook account and password to login to the app. The verification function is that, the app will ask each user to take and upload 3 selfies according to the given instructions, and also upload the photo identification, which shall be saved into our database. The admin will access the database and look at each user’s uploaded photos to determine whether this user is trustable or not, and give this user the right to use other functionalities of the app if the admin decides that this user is trustable.
+	For the verification part, 
+		1. The user will press the “verification” button.
+		2. There will an image show up in a new page. The user will look at the posture in the image and press “take photo” button. 
+		3. A new page shows up with a countdown number showing on the top and a camera on the bottom. The user needs to make the same posture as in last page. A photo will be automatically taken when the countdown reaches zero. 
+		4. Then the photo taken by the user will show up in a new page and a “next” button on the bottom. 
+		5. When the user press “next” button, she will be directed to the pending page which mean her verification is submitted and will be evaluated manually.
+
 
 
 ## Instructions
 
-1. As a user who uses this app, you can do the following:
-	-Visit https://snack.expo.io/@hagerregah/nomadher.v1 on the browser
-	-Tap “Tap to play” button on the screen of the phone on the right side of the web page, and the initial page of the app will appear
-	-On the initial page, tap “facebook” button
-	-Enter your facebook email and password, and press “log in” 
-	-At this stage, if you are an user who is already verified, you will be able to access the other part of the app, which are not implemented yet.
-	-If you are a user who has already submitted your photos and waiting for the result of the verification, you will be directed to a new page. On this page, you will be told that we have already received your photos, and you are currently waiting to be verified. You can click the “logout” button to log out and go back to the initial page.
+Some screen shots are included in the folder "Screen Shots".
 
-2. If you are a user who has not submitted your photos, you will be asked to take 3 selfies and upload 1 photo identification. Do the following:
-	-tap “start verfication”
-	-You will see a picture of a certain pose. There will be a 10 seconds countdown before the camera of the phone take a photo of your selfie. Do the same pose as shown on the picture, and waiting for the camera take the selfie of yours.
-	-Repeat step 2 until all required selfies are collected. You will see “selfies upload success”.
-	-You will be given another 10 seconds countdown before the camera of the phone take a photo of your identification document. The ducument can be a driver’s licence, a student card, etc. 
-	-After taking the photo of your identification document, you will see “Photo ID upload success”.
-	-Click “next”
-	You will be directed to a new page. On this page, you will be told that we have already received your photos, and you are currently waiting to be verified. You can click the “logout” button to log out and go back to the initial page.
+1. As a user who uses this app, you can do the following:
+	-download the apk file from https://drive.google.com/file/d/1zqRWqD60yS8PlQYLWNZSSu70fPkzmDYK/view?usp=sharing, and install the android app on your android cellphone. We also upload it onto our github repo under folder "deliverables" as "nomader-frontend.apk".
+	-On the initial page, tap “Login with facebook” button (MainScreenPage.png)
+	-Enter your facebook email and password, and press “log in” (Please use the Test user accounts provided below) (FacebookLogin.png)
+
+2. If you are a user who has not submitted your photos, you will be asked to take 1 selfies and upload 1 photo identification. Do the following:
+	-tap “verfication” (NonVerifiedUser1.png)
+	-You will see a picture of a certain pose. (NonVerifiedUser2.png)
+	-After you press "take photo", you will be given 3 seconds countdown before the camera of your phone take a photo of you. Please do the same pose as you see in the photo before. (NonVerifiedUser3.png)
+	-After taking the photo of yourself, press "Next" to submit it. (NonVerifiedUser4.png)
+	-You will be directed to a new page. On this page, you will be told that we have already received your photos, and you are currently waiting to be verified. (NonVerifiedUser5.png)
+
+3. If you are a user who has submit a photo but waiting for our staff to manually check, a message "Your verification is under review." (PendingUser.jpeg)
+
+4. If you are a registered user, a video will be played for you. (VerifiedUser.png)
+
+Test Users:
+1. Verified User:
+	UserID: true_zkgldnw_user@tfbnw.net
+	Password: csc301
+
+2. Unverified User:
+	UserID: false_mpbehao_user@tfbnw.net
+	Password: csc301
+
+3. Pending User:
+	UserID: pending_wymzmlo_user@tfbnw.net
+	Password: csc301
 
