@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import db
 
-cred = credentials.Certificate("nomadherd2-firebase-adminsdk-1l2wh-a12557d542.json")
+# cred = credentials.Certificate("nomadherd2-firebase-adminsdk-1l2wh-a12557d542.json")
 db = firestore.client()
 
 @api.route('/post_photo_id', methods=['POST'])

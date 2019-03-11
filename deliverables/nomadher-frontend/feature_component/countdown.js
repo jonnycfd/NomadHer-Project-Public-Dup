@@ -10,7 +10,7 @@ export default class CountDown extends Component {
 	constructor(props) {
 		super(props)
 		this.state = { 
-			countDown: this.props.initCount? this.props.initCount : 10, 
+			countDown: this.props.initCount? this.props.initCount : 3, 
 			finish: false,
 		}
 	}
