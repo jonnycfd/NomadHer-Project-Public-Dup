@@ -206,6 +206,7 @@ class TakePhotoCountDown extends React.Component {
     super(props)
     this.state = {
       takePhoto: false,
+      image_uri: "",
     }
   }
   
@@ -219,7 +220,8 @@ class TakePhotoCountDown extends React.Component {
   // Call this function after you got the photo.
   processImg = img => {
     // ... Do something with img. like send it out or something.
-    console.log(img)
+    this.state.image_uri = img.base64
+    console.log(this.state.image_uri)
     this.setState({takePhoto: false})
     console.log("Photo processing finished!")
   }
