@@ -7,7 +7,7 @@ export default class VideoComponent extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Video Verification</Text>
+        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Welcome to NoMadHer!</Text>
           <Video
             source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
             // source={require('../assets/testvideo.mp4')}
