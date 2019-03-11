@@ -26,7 +26,7 @@ import { SocialIcon } from 'react-native-elements'
 export default class App extends React.Component {
   render() {
     return (
-      <AppContainer />      
+      <AppContainer /> 
     )
       
   }
@@ -221,7 +221,7 @@ class TakePhotoCountDown extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Test, this is the login page.</Text>
+        <Text>The photo will be taken in 3 seconds.</Text>
         <CountDown initCount={3} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
         

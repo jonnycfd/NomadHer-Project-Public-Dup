@@ -64,7 +64,8 @@ Weakness:  1. Do not have experience on React Native framework. 2. Do not have e
 
 Role: Programmer, Tester and Designer (front end)
     
-Responsibilities: Design the UI and the connection between the interfaces
+Responsibilities: 1. Design the UI and the connection between the interfaces
+                            2. Implement the navigations between screen change
 
 Strength: 1. Experienced with web development(JS, Python) 2. Familiar with JAVA and database design and implementation. 3. Interested and have experience in UI/UX design. 4. Good at communication.
     
