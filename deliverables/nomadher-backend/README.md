@@ -4,3 +4,32 @@ Steps to run the backend:
 
 Database usage example:
 - python3 main.py
+
+
+# docker
+To start:
+
+`docker build -t d2-301 .`
+
+`docker run -d --name d2-301-container -p 80:80 d2-301:latest`
+
+`docker start d2-301-container`
+
+To stop/remove container:
+
+`docker stop d2-301-container`
+
+`docker rm d2-301-container`
+
+# heroku
+`heroku login`
+
+`heroku create --app team5-nomadher-api`
+
+`heroku container:login`
+
+`heroku container:push web --app team5-nomadher-api`
+
+`heroku container:release web --app team5-nomadher-api`
+
+`heroku open --app team5-nomadher-api`
