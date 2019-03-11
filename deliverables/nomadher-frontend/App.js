@@ -32,6 +32,8 @@ export default class App extends React.Component {
   }
 }
 
+const AppID = '2214679281946238';
+
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD5lrnpxS_2Kg__rx081B-uaXYLj_lgRG4",
@@ -69,7 +71,8 @@ class Login extends React.Component {
             'Content-Type': 'application/json'
           },
         });
-        
+
+        // POST user id to server
         fetch(request)
           .then((res) => {
             return res.json()
@@ -97,10 +100,10 @@ class Login extends React.Component {
     })
   }
 
-
+  // Login with Facebook
   async loginWithFacebook() {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
-      ('2214679281946238', { permissions: ['public_profile'] })
+      (AppID, { permissions: ['public_profile'] })
 
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
