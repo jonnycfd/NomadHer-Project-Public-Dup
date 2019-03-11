@@ -1,10 +1,10 @@
 import React from 'react';
-import TakePhoto from './feature_component/TakePhoto.js'
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import {Constants, Video} from 'expo'
 // import VideoComponent from './feature_component/Video.js'
 // import Login from './feature_component/Login.js'
 import CountDown from './feature_component/countdown.js'
+import TakePhoto from "./feature_component/TakePhoto.js"
 // import Hello from './feature_component/hello.js'
 // import SampleImage from './feature_component/image.js'
 import { Navigation } from 'react-native-navigation';
@@ -39,7 +39,11 @@ export default class App extends React.Component {
           // onPress={() => this.props.navigation.navigate('sampleimage')}
       // />
 
-      <AppContainer />
+      // <AppContainer />
+      <View style={styles.container}>
+      <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Camera</Text>
+      <TakePhotoCountDown />
+      </View>
       
     )
       
@@ -59,12 +63,23 @@ firebase.initializeApp(firebaseConfig);
 
 class Login extends React.Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+
+    this.state= {
+      logInStatus: 'signed out'
+    };
+  }
+
+  componentUpdateMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         console.log(user.providerData[0].uid)
+        if (this.state.logInStatus == "signed in") {
+        // console.log("222222222222") 
         // this.props.navigation.navigate('hello')
-        // console.log("11111111111")
+        console.log("11111111111")
+      }
       }
     })
   }
@@ -77,6 +92,11 @@ class Login extends React.Component {
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
       // this.postUID();
+      console.log("aaaaaaaaaaaa");
+      this.props.navigation.navigate('hello')
+
+      this.setState({logInStatus: 'signed in'})
+      console.log("bbbbbbbbbbbbb");
       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
       })
@@ -152,6 +172,43 @@ class SampleImage extends React.Component {
 //     setTimeout(() => {
 //     this.props.navigation.navigate('hello'); //this.props.navigation.navigate('Login')
 // }, 500); 
+  }
+}
+
+
+class TakePhotoCountDown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      takePhoto: false,
+    }
+  }
+  
+  // Call this function when the countdown is finish.
+  onFinish = () => {
+    this.setState({takePhoto: true})
+    console.log(this.state.takePhoto)
+    console.log("Finish countdown!")
+  }
+
+  // Call this function after you got the photo.
+  processImg = img => {
+    // ... Do something with img. like send it out or something.
+    console.log(img)
+    this.setState({takePhoto: false})
+    console.log("Photo processing finished!")
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Test, this is the login page.</Text>
+        <CountDown initCount={3} passIn={this.onFinish} />
+        <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
+        {console.log("hihihiihi")}
+        {console.log(this.state.takePhoto)}
+      </View>
+    )
   }
 }
 
