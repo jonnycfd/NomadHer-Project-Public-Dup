@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import {Constants, Video} from 'expo'
-// import VideoComponent from './feature_component/Video.js'
+import VideoComponent from './feature_component/Video.js'
 // import Login from './feature_component/Login.js'
 import CountDown from './feature_component/countdown.js'
 import TakePhoto from "./feature_component/TakePhoto.js"
+import Pending from "./feature_component/pending.js"
 // import Hello from './feature_component/hello.js'
 // import SampleImage from './feature_component/image.js'
 import { Navigation } from 'react-native-navigation';
@@ -95,10 +96,21 @@ class Login extends React.Component {
           })
           .then((jsonResult) => {
             console.log('Result:', jsonResult)
+
+            // when the user does not do the verification 
             if (jsonResult.verified.status == 'False'){
               this.props.navigation.navigate('hello')
 
-            } 
+            }
+
+            // when this user already finished verification
+            else if (jsonResult.verified.status == 'True'){
+              this.props.navigation.navigate('welcome')
+            }
+
+            else {
+              this.props.navigation.navigate('pending')
+            }
           }).catch((error) => {
             console.log("An error occured with fetch:", error)
           })
@@ -241,7 +253,9 @@ const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen: Login},
   hello:{screen: Hello},
   countdown:{screen: CountDown},
-  sampleimage:{screen: SampleImage}
+  sampleimage:{screen: SampleImage},
+  welcome:{screen:VideoComponent},
+  pending:{screen:Pending}
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
