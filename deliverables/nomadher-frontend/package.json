@@ -7,6 +7,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "exp": "^57.2.1",
     "expo": "^32.0.0",
     "expo-camera": "^3.0.0",
     "expo-cli": "^2.11.7",

@@ -24,6 +24,15 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "csc301.team5.mvp1",
+      "versionCode": 1,
+      "permissions": []
+
+
+
+
     }
   }
 }
