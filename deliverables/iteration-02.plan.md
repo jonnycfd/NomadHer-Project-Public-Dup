@@ -133,6 +133,20 @@ Describe your Git / GitHub workflow. Essentially, we want to understand how your
  * What deployment tool(s) are you using and why
  * Don't forget to **explain why** you chose this workflow or particular aspects of it!
 
+- Step1: We created two branches, nomadher-backend (used to implement backend part) and nomadher-frontend (used to implement frontend part)
+- Step2: Everyone work on the backend checkout to nomadher-backend, and Everyone work on the frontend checkout to nomadher-frontend
+- Step3: Before we start coding, we gave everyone a task. Each of us checkout a new branch from "nomadher-backend" or "nomadher-frontend" to finish our task.
+- Step4: In each commit, we added "backend: " or "frontend: " at the beginning of commit comment. (Easy for debug in the future)
+- Step5: After each person finished and tested his task on his own task-branch, he would make a pull-request from his current task-branch to "nomadher-backend" or "nomadher-frontend". After the pull-request is approved by one of other team members, the task-branch will be merged and deleted.
+- Step6: After we tested code on branch "nomadher-backend" or "nomadher-frontend", we merged these two branches into master and did the final test.
+
+- Deployment process: In backend we are using flask app. We used Docker and Heroku to deploy our backend. The process is same as A1. To deploy the front end, we used the tool exp by runnning "npm install -g exp", and then run "exp build:android" to create an apk file, which can be used to install the app on the android phone.
+
+- Backend API on Heroku
+login URL [POST]: https://team5-nomadher-api.herokuapp.com/api/login
+get_pose[GET]: https://team5-nomadher-api.herokuapp.com/api/get_pose/<userId>
+post_pose[POST]: https://team5-nomadher-api.herokuapp.com/api/post_poses
+post_photo_id[POST]: https://team5-nomadher-api.herokuapp.com/api/post_photo_id
 
 
 ## Product
