@@ -32,10 +32,9 @@ export default class TakePhoto extends React.Component {
 	async componentDidUpdate(prevProps) {
 		if (this.props.takePhoto && !prevProps.takePhoto) {
 			if (this.camera) {
-				let img = await this.camera.takePictureAsync()
+				let img = await this.camera.takePictureAsync({base64: true})
 				this.props.process(img)
 				console.log("i am here")
-				console.log(img)
 			}
 			// console.log("get called")
 		}
