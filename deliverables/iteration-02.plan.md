@@ -9,90 +9,67 @@
 
 #### Roles & responsibilities
 
-Pufan Zhao:
+- Pufan Zhao:
     Role: Team Leader, Programmer, and Tester (front end).
-    Responsibilities: 1. Write the login page for our application.
-                2. Write iteration-02.plan.md and iteration-02.review.md
-    Strengths:  1. Have experience with Python and other programming languages.
-                2. Have experience with SQL.
-                3. Have working experience with software tester.
-    Weaknesses: 1. Don’t have any experience with React Native framework.
-                2. Don’t have any experience with Mobile App development.
-                3. Don’t have any experience with Firebase database.
+    
+Responsibilities: 1. Write the login page for our application. 2. Write iteration-02.plan.md and iteration-02.review.md
 
-Jiayan Kong:
+Strengths:  1. Have experience with Python and other programming languages. 2. Have experience with SQL. 3. Have working experience with software tester.
+
+Weaknesses: 1. Don’t have any experience with React Native framework. 2. Don’t have any experience with Mobile App development. 3. Don’t have any experience with Firebase database.
+
+
+- Jiayan Kong:
     Role: Programmer and Tester (back end)
-            Responsibilities: 
-1. Connect the backend to the Firebase database and provide examples of adding and getting data.
-2. Write the function for storing photoID. 
-3. Mainly responsible for writing iteration-02.plan.md and iteration-02.review.md
-    Strengths:  1. Have experience with JAVA and other programming languages.
-                2. Have experience with databases such as MongoDB.
-                3. Have knowledge about data structure and design pattern.
-    Weaknesses: 1. Don’t have any experience with React Native framework.
-                2. Don’t have any experience with Firebase database.
-                3. Limited knowledge and experience for Mobile App development.
 
-Chengli Wu:
-    Role: Programmer and Tester  (front end)
-    Responsibilities: 
-Write the countdown function and allow users to take photos for verification
-Strengths: 
-1. Have experience with JAVA and SQL database operation.
-              2. Familiar with different data structure and design pattern.
-Weakness: 
-1. Do not have experience on React Native framework
-               2. Do not have mobile app development experience.
+Responsibilities: 1. Connect the backend to the Firebase database and provide examples of adding and getting data.2. Write the function for storing photoID. 3. Mainly responsible for writing iteration-02.plan.md and iteration-02.review.md
+    
+Strengths:  1. Have experience with JAVA and other programming languages. 2. Have experience with databases such as MongoDB. 3. Have knowledge about data structure and design pattern.
 
-Rui Cong:
+Weaknesses: 1. Don’t have any experience with React Native framework. 2. Don’t have any experience with Firebase database. 3. Limited knowledge and experience for Mobile App development.
+
+- Chengli Wu:
+Role: Programmer and Tester  (front end)
+    
+Responsibilities: Write the countdown function and allow users to take photos for verification
+
+Strengths: 1. Have experience with JAVA and SQL database operation. 2. Familiar with different data structure and design pattern.
+
+Weakness: 1. Do not have experience on React Native framework 2. Do not have mobile app development experience.
+
+- Rui Cong:
 Role: Programmer and Tester  (back end).
-Responsibilities: 
-1. Design the database schema
-2. Write the function that store data when the users log in
-3. Mainly responsible for writing README.md 
-    Strengths: 1. Experience with Javascript and NPM.
-               2. Familiar with SQL database
-               3. Knowledge in different data structures
-    Weakness:  1. Limited knowledge on React Native framework.
-               2. Limited knowledge on Mobile App development.
-               3. Don’t have any experience with Firebase database.
 
-Jia Nian Dong:
-    Role: Programmer, Tester & Designer (back end)
-            Responsibilities:
-1. Design the structure of JSON object which communicates with the front end
-2. Write the function that stores verification photos that users uploaded. 
-3. Contributed in writing iteration-02-review, and README.md
-    Strengths: 1. Experienced with Javascript & python 
-               2. Efficiency in time management & project planning.
-               3. Experienced in mobile app designing & UI/UX development.
-    Weakness:  1. Do not have experience on React Native framework.
-               2. Do not have experience on Firebase.
-               3. Not very efficient in SQL query writing.
+Responsibilities: 1. Design the database schema 2. Write the function that store data when the users log in 3. Mainly responsible for writing README.md 
 
-Lixuan Luo:
-    Role: Programmer, Tester and Designer (front end)
-    Responsibilities: 
-Design the UI and the connection between the interfaces
-Compiled the countdown function and the ability to take photos
-    Strength: 1. Experienced with web development(JS, Python)
-            2. Familiar with JAVA and database design and implementation.
-            3. Interested and have experience in UI/UX design.
-            4. Good at communication.
-    Weakness: 1. Do not have experience with React Native framework.
-                2. Limited knowledge of Mobile App development.
-                3. Sometimes make careless mistakes
+Strengths: 1. Experience with Javascript and NPM. 2. Familiar with SQL database 3. Knowledge in different data structures
 
-Zidong Xie:
+Weakness:  1. Limited knowledge on React Native framework. 2. Limited knowledge on Mobile App development. 3. Don’t have any experience with Firebase database.
+
+- Jia Nian Dong:Role: Programmer, Tester & Designer (back end)
+            
+Responsibilities:1. Design the structure of JSON object which communicates with the front end 2. Write the function that stores verification photos that users uploaded. 3. Contributed in writing iteration-02-review, and README.md
+
+Strengths: 1. Experienced with Javascript & python 2. Efficiency in time management & project planning. 3. Experienced in mobile app designing & UI/UX development.
+
+Weakness:  1. Do not have experience on React Native framework. 2. Do not have experience on Firebase. 3. Not very efficient in SQL query writing.
+
+- Lixuan Luo: Role: Programmer, Tester and Designer (front end)
+    
+Responsibilities: Design the UI and the connection between the interfaces
+
+Strength: 1. Experienced with web development(JS, Python) 2. Familiar with JAVA and database design and implementation. 3. Interested and have experience in UI/UX design. 4. Good at communication.
+    
+Weakness: 1. Do not have experience with React Native framework. 2. Limited knowledge of Mobile App development. 3. Sometimes make careless mistakes
+
+- Zidong Xie:
     Role: Programmer and Tester (back end)
-    Responsibilities:  
-Learn about using Firebase with Python, and share useful files with the team
-      2. Write the function that randomly retrieves action photos from the database 
-    Strength: 1. Experienced with web frontend and backend design.
-            2. Familiar with some web frameworks such as Vue and Flask
-            3. knowledged on common used database such as MySQL and MongoDB.
-    Weakness: 1. Limited knowledge on Mobile App development.
-               2. Don’t have any experience with Firebase database.
+    
+Responsibilities: 1.Learn about using Firebase with Python, and share useful files with the team 2. Write the function that randomly retrieves action photos from the database 
+    
+Strength: 1. Experienced with web frontend and backend design. 2. Familiar with some web frameworks such as Vue and Flask 3. knowledged on common used database such as MySQL and MongoDB.
+    
+Weakness: 1. Limited knowledge on Mobile App development. 2. Don’t have any experience with Firebase database.
 
 #### Team Rules
 
