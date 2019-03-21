@@ -1,10 +1,10 @@
 ## Team Deliverable 2, team-05
 
-#### Total : 63 (out of 100)
+#### Total : 81 (out of 100)
 
 | Component   | 0    |  1   |  2   |  3   |  4   |
 | ----------- | ---- | ---- | ---- | ---- | ---- |
-| `product` |   | X |   |   |   |
+| `product` |   |  |   | X |   |
 | `readme` |   |   | X |   |   |
 | `iteration-01.plan.md`   |   |   |   | X |   |
 | `iteration-01.review.md` |   |   | X |   |   |
@@ -21,8 +21,9 @@ _Reminder:_ The 0-4 marking scale means:
  * 0 : Missing (0%)
 
 Product
-- I was able to install the APK on my phone from Drive, but after clicking on the Facebook sign-in button, the app would flash but not do anything else. I know the app works as I saw a demo in Monday's tutorial. I have tried removing the app and re-installing from both the GitHub APK and Drive, yet now I am unable to install at all.
-- Team must contact the TAs and setup a time to demo the application for an accurate grade.
+- Mobile app demonstrates useful progress towards an MVP. Hoping to see more features developed for D3.
+- Ideally include all software artifacts that will be interacted with by all users. 
+  - ie, if verification is through the backend DB management and was implemented as a feature this deliverable, I would be interested in trying it out
 
 README.md
 - Just FYI, your code does not need to be in the `deliverable` folder. The D2 instructions were not completely clear. Only thing that *needs* to be in `deliverables` are the markdowns; rest of the structure is up to you. This is great as is; just thought it might help your organization. 
