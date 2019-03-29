@@ -17,9 +17,11 @@ export default class SampleImage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test') //地址更具实际情况更改
+    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
+    // fetch('https://100.64.84.85/api/test')
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
+      console.log({image: data.image_uri})
   }
 
 
