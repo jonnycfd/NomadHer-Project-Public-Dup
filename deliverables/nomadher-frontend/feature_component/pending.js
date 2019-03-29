@@ -11,10 +11,6 @@ export default class Pending extends React.Component {
 
   render() {
     return (
- //     <View style={styles.container}>
- //      <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your verification is under review.</Text>
- //     </View>
-
 
       <ImageBackground style={{width: '100%', height: '100%'}}
       resizeMode='cover' 
