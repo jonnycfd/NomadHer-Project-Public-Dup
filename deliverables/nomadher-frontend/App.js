@@ -198,10 +198,14 @@ class Login extends React.Component {
 class emailLogin extends React.Component {
   render() {
     return (
-      <Container>
-        <Form style={{marginTop:50,marginBottom: 20}}>
+      <Container style={{
+        flex: 1,
+        backgroundColor: '#fff',
+        justifyContent: 'center'
+      }}>
+        <Form>
 
-          <Item floatingLabel>
+          <Item floatingLabel style={{marginTop:50}}>
             <Label>Email</Label>
             <Input
               autoCorrect={false}
@@ -210,7 +214,7 @@ class emailLogin extends React.Component {
           </Item>
 
 
-          <Item floatingLabel>
+          <Item floatingLabel style={{marginBottom:50}}>
             <Label>Password</Label>
             <Input
               secureTextEntry={true}
@@ -220,16 +224,20 @@ class emailLogin extends React.Component {
           </Item>
 
 
-          <Button style={{width:'50%'}}
-            rounded
+          <Button style = {{marginBottom: 30}}
+            full
+            success
             title = 'Login'
             color = 'green'
             onPress={()=>alert('pressed')}
           >
           
           </Button>
-          <Button style={{marginTop:50}}
+
+
+          <Button style = {{marginTop: 30}}
             rounded
+            full
             title = 'Sign Up'
             color = 'blue'
             onPress={()=>alert('pressed')}
@@ -651,9 +659,5 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		fontSize: 140,
-  },
-  button:{
-    marginTop: 20,
-    marginBottom: 20
   }
 });
