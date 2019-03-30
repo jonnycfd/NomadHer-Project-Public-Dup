@@ -173,13 +173,21 @@ class Login extends React.Component {
           full
           onPress={() => this.loginWithFacebook()}
         />
+
         <SocialIcon
+          title='Login/Sign up With Email'
+          button
+          type='envelope'
+          full
+          onPress={() => this.props.navigation.navigate('emailLogin')}
+        />
+        {/* <SocialIcon
           title='Login With Google'
           button
           type='google-plus-official'
           full
           onPress={() => this.signInWithGoogleAsync()}
-        />
+        /> */}
       </View>
 
 
@@ -187,7 +195,57 @@ class Login extends React.Component {
   }
 }
 
+class emailLogin extends React.Component {
+  render() {
+    return (
+      <Container>
+        <Form style={{marginTop:50,marginBottom: 20}}>
 
+          <Item floatingLabel>
+            <Label>Email</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+            />
+          </Item>
+
+
+          <Item floatingLabel>
+            <Label>Password</Label>
+            <Input
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+            />
+          </Item>
+
+
+          <Button style={{width:'50%'}}
+            rounded
+            title = 'Login'
+            color = 'green'
+            onPress={()=>alert('pressed')}
+          >
+          
+          </Button>
+          <Button style={{marginTop:50}}
+            rounded
+            title = 'Sign Up'
+            color = 'blue'
+            onPress={()=>alert('pressed')}
+          >
+          </Button>
+        </Form>
+
+
+      </Container>
+    )
+  }
+    
+
+  
+
+}
 
 // =================================Hello page===============================
 class Hello extends React.Component {
@@ -565,6 +623,7 @@ class Photo3 extends React.Component {
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen: Login},
+  emailLogin:{screen: emailLogin},
   hello:{screen: Hello},
   countdown:{screen: CountDown},
   sampleimage1:{screen: SampleImage1},
@@ -592,5 +651,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		fontSize: 140,
-	}
+  },
+  button:{
+    marginTop: 20,
+    marginBottom: 20
+  }
 });
