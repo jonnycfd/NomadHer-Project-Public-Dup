@@ -15,6 +15,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { deletePhotoId, deletePose, modifyUserState } from '@/js/modifyDatabase.js';
+import { db } from '@/js/firebase.js';
 
 export default {
   name: 'UserList',
