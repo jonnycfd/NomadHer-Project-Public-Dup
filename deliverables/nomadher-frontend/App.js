@@ -211,17 +211,14 @@ class emailLogin extends React.Component {
         alert("Password must be at least 8 character.")
         return;
       }
-      var hasError = 0;
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(function(user) {
+        alert('Account successfully create! Please login!')
+      })
+      .catch(function (error) {
         var errorMessage = error.message;
         alert(errorMessage);
-        hasError = 1;
       });
-      setTimeout(function () {
-        if (hasError === 0) {
-          alert('Account successfully create! Please login!')
-        }
-      }, 1000);
 
     }
     catch (error) {
@@ -230,7 +227,7 @@ class emailLogin extends React.Component {
 
   }
 
-  async logInUser(email, password) {
+  async logInUser(email, password, emailLoginThis) {
     try {
       var hasError = 0;
       firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
@@ -259,30 +256,25 @@ class emailLogin extends React.Component {
           // POST user id to server
           fetch(request)
             .then((res) => {
-              console.log(jsonResult)
               return res.json()
             })
             .then((jsonResult) => {
-              console.log(jsonResult)
-
               // when the user does not do the verification 
               if (jsonResult.verified.status == 'False') {
-                this.props.navigation.navigate('hello')
+                emailLoginThis.props.navigation.navigate('hello')
 
               }
 
               // when this user already finished verification
               else if (jsonResult.verified.status == 'True') {
-                this.props.navigation.navigate('welcome')
+                emailLoginThis.props.navigation.navigate('welcome')
               }
 
               // when this user's verification is under review
               else {
-                this.props.navigation.navigate('pending')
+                emailLoginThis.props.navigation.navigate('pending')
               }
             }).catch((error) => {
-              console.log('-----------------')
-              console.log(jsonResult)
               console.log("An error occured with fetch:", error)
             })
 
@@ -290,8 +282,6 @@ class emailLogin extends React.Component {
       })
     }
     catch (error) {
-
-
       console.log(error.toString())
     }
   }
@@ -333,7 +323,7 @@ class emailLogin extends React.Component {
             // variant = 'dark'
             title='Login'
             color='green'
-            onPress={() => this.logInUser(this.state.email, this.state.password)}
+            onPress={() => this.logInUser(this.state.email, this.state.password, this)}
           >
 
           </Button>
