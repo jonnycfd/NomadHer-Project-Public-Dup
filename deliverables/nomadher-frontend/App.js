@@ -24,7 +24,6 @@ import { Google } from 'expo';
 import { SocialIcon } from 'react-native-elements'
 
 
-
 export default class App extends React.Component {
   render() {
     return (
@@ -196,6 +195,48 @@ class Login extends React.Component {
 }
 
 class emailLogin extends React.Component {
+  
+  constructor(props) {
+    super(props)
+
+    this.state = ({
+      email: '',
+      password: ''
+    })
+  }
+  
+  async signUpUser (email, password) {
+    try {
+      if(this.state.password.length < 8)
+        {
+          alert("Password must be at least 8 character.")
+          return;
+        }
+      var hasError = 0;
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        var errorMessage = error.message;
+        alert(errorMessage);
+        hasError = 1;
+      });
+      setTimeout(function() {     
+         if (hasError === 0) {
+          alert('success')
+      }}, 1000);
+
+    }
+    catch(error){
+      console.log(error.toString())
+    }
+
+  }
+
+  logInUser = (email, password) => {
+
+  }
+  
+  
+  
+  
   render() {
     return (
       <Container style={{
@@ -210,6 +251,7 @@ class emailLogin extends React.Component {
             <Input
               autoCorrect={false}
               autoCapitalize="none"
+              onChangeText={(email) => this.setState({email})}
             />
           </Item>
 
@@ -220,16 +262,18 @@ class emailLogin extends React.Component {
               secureTextEntry={true}
               autoCorrect={false}
               autoCapitalize="none"
+              onChangeText={(password) => this.setState({password})}
+
             />
           </Item>
 
 
-          <Button style = {{marginBottom: 30}}
-            full
-            success
+          <Button
+            
+            // variant = 'dark'
             title = 'Login'
             color = 'green'
-            onPress={()=>alert('pressed')}
+            onPress={()=>this.logInUser(this.state.email, this.state.password)}
           >
           
           </Button>
@@ -240,7 +284,7 @@ class emailLogin extends React.Component {
             full
             title = 'Sign Up'
             color = 'blue'
-            onPress={()=>alert('pressed')}
+            onPress={()=>this.signUpUser(this.state.email, this.state.password)}
           >
           </Button>
         </Form>
