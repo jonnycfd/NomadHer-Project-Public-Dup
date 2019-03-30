@@ -20,6 +20,7 @@ import {
 
 import { Container, Content, Header, Form, Input, Item, Label } from 'native-base';
 import * as firebase from 'firebase';
+import { Google } from 'expo';
 import { SocialIcon } from 'react-native-elements'
 
 
@@ -102,6 +103,46 @@ class Login extends React.Component {
     })
   }
 
+  signInWithGoogleAsync = async () => {
+          console.log("aaaaaaaa")
+    const clientId = '537831679054-s9iur0ff7hg08mmskjdtgfgdrp6af26c.apps.googleusercontent.com';
+    console.log('kkkkkk')
+    const {type, accessToken, user} = await Google.logInAsync({clientId});
+      console.log("bbbbbb")
+
+    if (type === 'success') {
+            console.log("cccccc")
+
+      console.log(user);
+    }
+          console.log("ddddd")
+
+
+
+    // try {
+    //   console.log("aaaaaaaa")
+    //   const result = await Expo.Google.logInAsync({
+    //     behavior: 'web',
+    //     androidClientId:'537831679054-s9iur0ff7hg08mmskjdtgfgdrp6af26c.apps.googleusercontent.com',
+    //     scopes: ['profile', 'email']
+    //   });
+    //   console.log("bbbbbbb")
+    //   if (result.type === 'success'){
+    //     console.log("ccccccc")
+
+    //     return result.accessToken;
+    //   } else{
+    //     console.log("dddd")
+
+    //     return {cancelled: true};
+    //   }
+    // } catch (e) {
+    //   console.log("ffffff")
+
+    //   return {error: true};
+    // }
+  }
+
   // Login with Facebook
   async loginWithFacebook() {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
@@ -131,6 +172,13 @@ class Login extends React.Component {
           type='facebook'
           full
           onPress={() => this.loginWithFacebook()}
+        />
+        <SocialIcon
+          title='Login With Google'
+          button
+          type='google-plus-official'
+          full
+          onPress={() => this.signInWithGoogleAsync()}
         />
       </View>
 
