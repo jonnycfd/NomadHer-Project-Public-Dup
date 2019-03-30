@@ -230,8 +230,63 @@ class emailLogin extends React.Component {
 
   }
 
-  logInUser = (email, password) => {
+  async logInUser (email, password) {
+      try {
+        var hasError = 0;
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
+          var errorMessage = error.message;
+          alert(errorMessage)
+          hasError = 1;
 
+        }).then(function (user) {
+          if (hasError === 0) {
+            
+
+        const url = "https://team5-nomadher-api.herokuapp.com/api/login";
+        let data = {
+          "user_id": user.user.email
+        }
+        console.log(data)
+        const request = new Request(url, {
+          method: 'post',
+          body: JSON.stringify(data),
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+        });
+
+        // POST user id to server
+        fetch(request)
+          .then((res) => {
+            return res.json()
+          })
+          .then((jsonResult) => {
+            // when the user does not do the verification 
+            if (jsonResult.verified.status == 'False'){
+              this.props.navigation.navigate('hello')
+
+            }
+
+            // when this user already finished verification
+            else if (jsonResult.verified.status == 'True'){
+              this.props.navigation.navigate('welcome')
+            }
+
+            // when this user's verification is under review
+            else {
+              this.props.navigation.navigate('pending')
+            }
+          }).catch((error) => {
+            console.log("An error occured with fetch:", error)
+          })
+
+          }
+        })
+      }
+      catch (error) {
+        console.log(error.toString())
+      }
   }
   
   
