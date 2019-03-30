@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import {Constants, Video} from 'expo'
+import { Constants, Video } from 'expo'
 import VideoComponent from './feature_component/Video.js'
 // import Login from './feature_component/Login.js'
 import CountDown from './feature_component/countdown.js'
@@ -9,7 +9,7 @@ import Pending from "./feature_component/pending.js"
 // import Hello from './feature_component/hello.js'
 // import SampleImage from './feature_component/image.js'
 import { Navigation } from 'react-native-navigation';
-import {ImageBackground} from 'react-native';
+import { ImageBackground } from 'react-native';
 import {
   createSwitchNavigator,
   createAppContainer,
@@ -27,10 +27,10 @@ import { SocialIcon } from 'react-native-elements'
 export default class App extends React.Component {
   render() {
     return (
-      <AppContainer /> 
+      <AppContainer />
       // <Pending />
     )
-      
+
   }
 }
 
@@ -52,7 +52,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       logInStatus: 'signed out'
     };
   }
@@ -81,13 +81,13 @@ class Login extends React.Component {
           })
           .then((jsonResult) => {
             // when the user does not do the verification 
-            if (jsonResult.verified.status == 'False'){
+            if (jsonResult.verified.status == 'False') {
               this.props.navigation.navigate('hello')
 
             }
 
             // when this user already finished verification
-            else if (jsonResult.verified.status == 'True'){
+            else if (jsonResult.verified.status == 'True') {
               this.props.navigation.navigate('welcome')
             }
 
@@ -98,23 +98,23 @@ class Login extends React.Component {
           }).catch((error) => {
             console.log("An error occured with fetch:", error)
           })
-      } 
+      }
     })
   }
 
   signInWithGoogleAsync = async () => {
-          console.log("aaaaaaaa")
+    console.log("aaaaaaaa")
     const clientId = '537831679054-s9iur0ff7hg08mmskjdtgfgdrp6af26c.apps.googleusercontent.com';
     console.log('kkkkkk')
-    const {type, accessToken, user} = await Google.logInAsync({clientId});
-      console.log("bbbbbb")
+    const { type, accessToken, user } = await Google.logInAsync({ clientId });
+    console.log("bbbbbb")
 
     if (type === 'success') {
-            console.log("cccccc")
+      console.log("cccccc")
 
       console.log(user);
     }
-          console.log("ddddd")
+    console.log("ddddd")
 
 
 
@@ -150,7 +150,7 @@ class Login extends React.Component {
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
 
-      this.setState({logInStatus: 'signed in'})
+      this.setState({ logInStatus: 'signed in' })
 
       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
@@ -195,7 +195,7 @@ class Login extends React.Component {
 }
 
 class emailLogin extends React.Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -204,94 +204,99 @@ class emailLogin extends React.Component {
       password: ''
     })
   }
-  
-  async signUpUser (email, password) {
+
+  async signUpUser(email, password) {
     try {
-      if(this.state.password.length < 8)
-        {
-          alert("Password must be at least 8 character.")
-          return;
-        }
+      if (this.state.password.length < 8) {
+        alert("Password must be at least 8 character.")
+        return;
+      }
       var hasError = 0;
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
         var errorMessage = error.message;
         alert(errorMessage);
         hasError = 1;
       });
-      setTimeout(function() {     
-         if (hasError === 0) {
-          alert('success')
-      }}, 1000);
+      setTimeout(function () {
+        if (hasError === 0) {
+          alert('Account successfully create! Please login!')
+        }
+      }, 1000);
 
     }
-    catch(error){
+    catch (error) {
       console.log(error.toString())
     }
 
   }
 
-  async logInUser (email, password) {
-      try {
-        var hasError = 0;
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
-          var errorMessage = error.message;
-          alert(errorMessage)
-          hasError = 1;
+  async logInUser(email, password) {
+    try {
+      var hasError = 0;
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+        var errorMessage = error.message;
+        alert(errorMessage)
+        hasError = 1;
 
-        }).then(function (user) {
-          if (hasError === 0) {
-            
+      }).then(function (user) {
+        if (hasError === 0) {
 
-        const url = "https://team5-nomadher-api.herokuapp.com/api/login";
-        let data = {
-          "user_id": user.user.email
-        }
-        console.log(data)
-        const request = new Request(url, {
-          method: 'post',
-          body: JSON.stringify(data),
-          headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-          },
-        });
 
-        // POST user id to server
-        fetch(request)
-          .then((res) => {
-            return res.json()
-          })
-          .then((jsonResult) => {
-            // when the user does not do the verification 
-            if (jsonResult.verified.status == 'False'){
-              this.props.navigation.navigate('hello')
-
-            }
-
-            // when this user already finished verification
-            else if (jsonResult.verified.status == 'True'){
-              this.props.navigation.navigate('welcome')
-            }
-
-            // when this user's verification is under review
-            else {
-              this.props.navigation.navigate('pending')
-            }
-          }).catch((error) => {
-            console.log("An error occured with fetch:", error)
-          })
-
+          const url = "https://team5-nomadher-api.herokuapp.com/api/login";
+          let data = {
+            "user_id": user.user.email
           }
-        })
-      }
-      catch (error) {
-        console.log(error.toString())
-      }
+          console.log(data)
+          const request = new Request(url, {
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+          });
+
+          // POST user id to server
+          fetch(request)
+            .then((res) => {
+              console.log(jsonResult)
+              return res.json()
+            })
+            .then((jsonResult) => {
+              console.log(jsonResult)
+
+              // when the user does not do the verification 
+              if (jsonResult.verified.status == 'False') {
+                this.props.navigation.navigate('hello')
+
+              }
+
+              // when this user already finished verification
+              else if (jsonResult.verified.status == 'True') {
+                this.props.navigation.navigate('welcome')
+              }
+
+              // when this user's verification is under review
+              else {
+                this.props.navigation.navigate('pending')
+              }
+            }).catch((error) => {
+              console.log('-----------------')
+              console.log(jsonResult)
+              console.log("An error occured with fetch:", error)
+            })
+
+        }
+      })
+    }
+    catch (error) {
+
+
+      console.log(error.toString())
+    }
   }
-  
-  
-  
-  
+
+
   render() {
     return (
       <Container style={{
@@ -301,45 +306,45 @@ class emailLogin extends React.Component {
       }}>
         <Form>
 
-          <Item floatingLabel style={{marginTop:50}}>
+          <Item floatingLabel style={{ marginTop: 50 }}>
             <Label>Email</Label>
             <Input
               autoCorrect={false}
               autoCapitalize="none"
-              onChangeText={(email) => this.setState({email})}
+              onChangeText={(email) => this.setState({ email })}
             />
           </Item>
 
 
-          <Item floatingLabel style={{marginBottom:50}}>
+          <Item floatingLabel style={{ marginBottom: 50 }}>
             <Label>Password</Label>
             <Input
               secureTextEntry={true}
               autoCorrect={false}
               autoCapitalize="none"
-              onChangeText={(password) => this.setState({password})}
+              onChangeText={(password) => this.setState({ password })}
 
             />
           </Item>
 
 
           <Button
-            
+
             // variant = 'dark'
-            title = 'Login'
-            color = 'green'
-            onPress={()=>this.logInUser(this.state.email, this.state.password)}
+            title='Login'
+            color='green'
+            onPress={() => this.logInUser(this.state.email, this.state.password)}
           >
-          
+
           </Button>
 
 
-          <Button style = {{marginTop: 30}}
+          <Button style={{ marginTop: 30 }}
             rounded
             full
-            title = 'Sign Up'
-            color = 'blue'
-            onPress={()=>this.signUpUser(this.state.email, this.state.password)}
+            title='Sign Up'
+            color='blue'
+            onPress={() => this.signUpUser(this.state.email, this.state.password)}
           >
           </Button>
         </Form>
@@ -348,9 +353,9 @@ class emailLogin extends React.Component {
       </Container>
     )
   }
-    
 
-  
+
+
 
 }
 
@@ -358,16 +363,16 @@ class emailLogin extends React.Component {
 class Hello extends React.Component {
   render() {
     return (
-      <ImageBackground style={{width: '100%', height: '100%'}}
-      opacity={0.9}
-      source={require('./assets/hello.jpg')}>
-      <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{textAlign: 'center', fontSize: 35, fontWeight:'bold', color:'white'}}> Hello</Text>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold', color:'white'}}> Please finish the verification</Text> 
-        <Button title="verification"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown0')}
-      />   
-      </View>
+      <ImageBackground style={{ width: '100%', height: '100%' }}
+        opacity={0.9}
+        source={require('./assets/hello.jpg')}>
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ textAlign: 'center', fontSize: 35, fontWeight: 'bold', color: 'white' }}> Hello</Text>
+          <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold', color: 'white' }}> Please finish the verification</Text>
+          <Button title="verification"
+            onPress={() => this.props.navigation.navigate('takePhotoCountDown0')}
+          />
+        </View>
       </ImageBackground>
     )
   }
@@ -388,7 +393,7 @@ class SampleImage1 extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test') 
+    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
   }
@@ -398,17 +403,17 @@ class SampleImage1 extends React.Component {
     const { image } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Sample Image1</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Sample Image1</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: image}}
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: image }}
         />
 
         <Button title="take photo"
           onPress={() => this.props.navigation.navigate('takePhotoCountDown1')}
         />
-        
+
       </View>
     )
   }
@@ -426,7 +431,7 @@ class SampleImage2 extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test') 
+    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
   }
@@ -436,17 +441,17 @@ class SampleImage2 extends React.Component {
     const { image } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Sample Image2</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Sample Image2</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: image}}
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: image }}
         />
 
         <Button title="take photo"
           onPress={() => this.props.navigation.navigate('takePhotoCountDown2')}
         />
-        
+
       </View>
     )
   }
@@ -463,7 +468,7 @@ class SampleImage3 extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test') 
+    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
       .then(response => response.json())
       .then(data => this.setState({ image: data.image_uri }));
   }
@@ -473,17 +478,17 @@ class SampleImage3 extends React.Component {
     const { image } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Sample Image3</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Sample Image3</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: image}}
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: image }}
         />
 
         <Button title="take photo"
           onPress={() => this.props.navigation.navigate('takePhotoCountDown3')}
         />
-        
+
       </View>
     )
   }
@@ -499,17 +504,17 @@ class TakePhotoCountDown0 extends React.Component {
       image_uri: "",
     }
   }
-  
+
   // Call this function when the countdown is finish.
   onFinish = () => {
-    this.setState({takePhoto: true})
+    this.setState({ takePhoto: true })
   }
 
   // Call this function after you got the photo.
   processImg = img => {
     this.state.image_uri = img.base64
-    this.setState({takePhoto: false})
-    this.props.navigation.navigate('photo0',{imageData:img.base64})
+    this.setState({ takePhoto: false })
+    this.props.navigation.navigate('photo0', { imageData: img.base64 })
   }
 
   render() {
@@ -518,7 +523,7 @@ class TakePhotoCountDown0 extends React.Component {
         <Text>Pleas take the photo of your ID in 10 seconds.</Text>
         <CountDown initCount={10} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
-        
+
       </View>
     )
   }
@@ -532,17 +537,17 @@ class TakePhotoCountDown1 extends React.Component {
       image_uri: "",
     }
   }
-  
+
   // Call this function when the countdown is finish.
   onFinish = () => {
-    this.setState({takePhoto: true})
+    this.setState({ takePhoto: true })
   }
 
   // Call this function after you got the photo.
   processImg = img => {
     this.state.image_uri = img.base64
-    this.setState({takePhoto: false})
-    this.props.navigation.navigate('photo1',{imageData:img.base64})
+    this.setState({ takePhoto: false })
+    this.props.navigation.navigate('photo1', { imageData: img.base64 })
   }
 
   render() {
@@ -551,7 +556,7 @@ class TakePhotoCountDown1 extends React.Component {
         <Text>The photo will be taken in 3 seconds.</Text>
         <CountDown initCount={3} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
-        
+
       </View>
     )
   }
@@ -565,17 +570,17 @@ class TakePhotoCountDown2 extends React.Component {
       image_uri: "",
     }
   }
-  
+
   // Call this function when the countdown is finish.
   onFinish = () => {
-    this.setState({takePhoto: true})
+    this.setState({ takePhoto: true })
   }
 
   // Call this function after you got the photo.
   processImg = img => {
     this.state.image_uri = img.base64
-    this.setState({takePhoto: false})
-    this.props.navigation.navigate('photo2',{imageData:img.base64})
+    this.setState({ takePhoto: false })
+    this.props.navigation.navigate('photo2', { imageData: img.base64 })
   }
 
   render() {
@@ -584,7 +589,7 @@ class TakePhotoCountDown2 extends React.Component {
         <Text>The photo will be taken in 3 seconds.</Text>
         <CountDown initCount={3} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
-        
+
       </View>
     )
   }
@@ -599,17 +604,17 @@ class TakePhotoCountDown3 extends React.Component {
       image_uri: "",
     }
   }
-  
+
   // Call this function when the countdown is finish.
   onFinish = () => {
-    this.setState({takePhoto: true})
+    this.setState({ takePhoto: true })
   }
 
   // Call this function after you got the photo.
   processImg = img => {
     this.state.image_uri = img.base64
-    this.setState({takePhoto: false})
-    this.props.navigation.navigate('photo3',{imageData:img.base64})
+    this.setState({ takePhoto: false })
+    this.props.navigation.navigate('photo3', { imageData: img.base64 })
   }
 
   render() {
@@ -618,7 +623,7 @@ class TakePhotoCountDown3 extends React.Component {
         <Text>The photo will be taken in 3 seconds.</Text>
         <CountDown initCount={3} passIn={this.onFinish} />
         <TakePhoto takePhoto={this.state.takePhoto} process={this.processImg} />
-        
+
       </View>
     )
   }
@@ -628,20 +633,20 @@ class TakePhotoCountDown3 extends React.Component {
 class Photo0 extends React.Component {
 
   render() {
-    const imageData = this.props.navigation.getParam('imageData','No_image_data')
+    const imageData = this.props.navigation.getParam('imageData', 'No_image_data')
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your ID Photo</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Your ID Photo</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: 'data:image/png;base64,' + imageData}}
-          />
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: 'data:image/png;base64,' + imageData }}
+        />
 
         <Button title="Next"
           onPress={() => this.props.navigation.navigate('sampleimage1')}
         />
-        
+
       </View>
     )
   }
@@ -650,20 +655,20 @@ class Photo0 extends React.Component {
 class Photo1 extends React.Component {
 
   render() {
-    const imageData = this.props.navigation.getParam('imageData','No_image_data')
+    const imageData = this.props.navigation.getParam('imageData', 'No_image_data')
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your Photo1</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Your Photo1</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: 'data:image/png;base64,' + imageData}}
-          />
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: 'data:image/png;base64,' + imageData }}
+        />
 
         <Button title="Next"
           onPress={() => this.props.navigation.navigate('sampleimage2')}
         />
-        
+
       </View>
     )
   }
@@ -673,20 +678,20 @@ class Photo1 extends React.Component {
 class Photo2 extends React.Component {
 
   render() {
-    const imageData = this.props.navigation.getParam('imageData','No_image_data')
+    const imageData = this.props.navigation.getParam('imageData', 'No_image_data')
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your Photo2</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Your Photo2</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: 'data:image/png;base64,' + imageData}}
-          />
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: 'data:image/png;base64,' + imageData }}
+        />
 
         <Button title="Next"
           onPress={() => this.props.navigation.navigate('sampleimage3')}
         />
-        
+
       </View>
     )
   }
@@ -695,20 +700,20 @@ class Photo2 extends React.Component {
 class Photo3 extends React.Component {
 
   render() {
-    const imageData = this.props.navigation.getParam('imageData','No_image_data')
+    const imageData = this.props.navigation.getParam('imageData', 'No_image_data')
     return (
       <View style={styles.container}>
-        <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold'}}> Your Photo3</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}> Your Photo3</Text>
 
         <Image
-          style={{width: "100%", height: "75%"}}
-          source={{uri: 'data:image/png;base64,' + imageData}}
-          />
+          style={{ width: "100%", height: "75%" }}
+          source={{ uri: 'data:image/png;base64,' + imageData }}
+        />
 
         <Button title="Next"
           onPress={() => this.props.navigation.navigate('pending')}
         />
-        
+
       </View>
     )
   }
@@ -729,34 +734,34 @@ class Photo3 extends React.Component {
 // });
 
 const AppSwitchNavigator = createSwitchNavigator({
-  Login:{screen: Login},
-  emailLogin:{screen: emailLogin},
-  hello:{screen: Hello},
-  countdown:{screen: CountDown},
-  sampleimage1:{screen: SampleImage1},
-  sampleimage2:{screen: SampleImage2},
-  sampleimage3:{screen: SampleImage3},
-  takePhotoCountDown0:{screen: TakePhotoCountDown0},
-  takePhotoCountDown1:{screen: TakePhotoCountDown1},
-  takePhotoCountDown2:{screen: TakePhotoCountDown2},
-  takePhotoCountDown3:{screen: TakePhotoCountDown3},
-  welcome:{screen:VideoComponent},
-  pending:{screen:Pending},
-  photo0:{screen:Photo0},
-  photo1:{screen:Photo1},
-  photo2:{screen:Photo2},
-  photo3:{screen:Photo3}
+  Login: { screen: Login },
+  emailLogin: { screen: emailLogin },
+  hello: { screen: Hello },
+  countdown: { screen: CountDown },
+  sampleimage1: { screen: SampleImage1 },
+  sampleimage2: { screen: SampleImage2 },
+  sampleimage3: { screen: SampleImage3 },
+  takePhotoCountDown0: { screen: TakePhotoCountDown0 },
+  takePhotoCountDown1: { screen: TakePhotoCountDown1 },
+  takePhotoCountDown2: { screen: TakePhotoCountDown2 },
+  takePhotoCountDown3: { screen: TakePhotoCountDown3 },
+  welcome: { screen: VideoComponent },
+  pending: { screen: Pending },
+  photo0: { screen: Photo0 },
+  photo1: { screen: Photo1 },
+  photo2: { screen: Photo2 },
+  photo3: { screen: Photo3 }
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
 
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-		fontSize: 140,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 140,
   }
 });
