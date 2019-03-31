@@ -34,6 +34,7 @@ export default class App extends React.Component {
   }
 }
 
+// Facebook developer App ID
 const AppID = '2214679281946238';
 
 // Initialize Firebase
@@ -49,6 +50,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Store the user id.
 var user_id;
+var pose_id;
 
 class Login extends React.Component {
 
@@ -79,7 +81,7 @@ class Login extends React.Component {
           },
         });
 
-        // POST user id to server
+        // POST user id to server, and receive user status
         fetch(request)
           .then((res) => {
             return res.json()
@@ -107,45 +109,6 @@ class Login extends React.Component {
     })
   }
 
-  signInWithGoogleAsync = async () => {
-    console.log("aaaaaaaa")
-    const clientId = '537831679054-s9iur0ff7hg08mmskjdtgfgdrp6af26c.apps.googleusercontent.com';
-    console.log('kkkkkk')
-    const { type, accessToken, user } = await Google.logInAsync({ clientId });
-    console.log("bbbbbb")
-
-    if (type === 'success') {
-      console.log("cccccc")
-
-      console.log(user);
-    }
-    console.log("ddddd")
-
-
-
-    // try {
-    //   console.log("aaaaaaaa")
-    //   const result = await Expo.Google.logInAsync({
-    //     behavior: 'web',
-    //     androidClientId:'537831679054-s9iur0ff7hg08mmskjdtgfgdrp6af26c.apps.googleusercontent.com',
-    //     scopes: ['profile', 'email']
-    //   });
-    //   console.log("bbbbbbb")
-    //   if (result.type === 'success'){
-    //     console.log("ccccccc")
-
-    //     return result.accessToken;
-    //   } else{
-    //     console.log("dddd")
-
-    //     return {cancelled: true};
-    //   }
-    // } catch (e) {
-    //   console.log("ffffff")
-
-    //   return {error: true};
-    // }
-  }
 
   // Login with Facebook
   async loginWithFacebook() {
@@ -192,23 +155,9 @@ class Login extends React.Component {
             reverse
             onPress={() => this.props.navigation.navigate('emailLogin')}
           />
-          {/* <SocialIcon
-            title='Login With Google'
-            button
-            type='google-plus-official'
-            full
-            onPress={() => this.signInWithGoogleAsync()}
-          /> */}
-        </View>
+      </View>
       </ImageBackground>
 
-      // <ImageBackground style={{width: '100%', height: '100%'}}
-      // resizeMode='cover' 
-      // source={require('../assets/pending.jpg')}>
-      //   <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-      //    <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold', color:'green'}}>Your verification is under review</Text>
-      //   </View>
-      // </ImageBackground>
 
 
     );
@@ -259,7 +208,6 @@ class emailLogin extends React.Component {
       }).then(function (user) {
         if (hasError === 0) {
 
-
           const url = "https://team5-nomadher-api.herokuapp.com/api/login";
           let data = {
             "user_id": user.user.email
@@ -277,7 +225,7 @@ class emailLogin extends React.Component {
             },
           });
 
-          // POST user id to server
+          // POST user id to server and receive user status
           fetch(request)
             .then((res) => {
               return res.json()
@@ -402,14 +350,21 @@ class SampleImage1 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: "placeholder"
     };
+
+    
+
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
+    fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -425,7 +380,7 @@ class SampleImage1 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown1')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown1', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -440,14 +395,18 @@ class SampleImage2 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: "placeholder"
     };
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
+    fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -463,7 +422,7 @@ class SampleImage2 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown2')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown2', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -477,14 +436,18 @@ class SampleImage3 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: "placeholder"
     };
   }
 
   componentDidMount() {
-    fetch('https://team5-nomadher-api.herokuapp.com/api/test')
+    fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -500,7 +463,7 @@ class SampleImage3 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown3')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown3', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -528,7 +491,7 @@ class TakePhotoCountDown0 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_photo_id', this.state.image_uri)
+    sendPhoto(this.state.image_uri, -1)
     this.props.navigation.navigate('photo0', { imageData: img.base64 })
     
   }
@@ -563,7 +526,8 @@ class TakePhotoCountDown1 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
+    console.log(pose_id);
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo1', { imageData: img.base64 })
     
   }
@@ -598,7 +562,7 @@ class TakePhotoCountDown2 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo2', { imageData: img.base64 })
   }
 
@@ -633,7 +597,7 @@ class TakePhotoCountDown3 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo3', { imageData: img.base64 })
   }
 
@@ -650,11 +614,24 @@ class TakePhotoCountDown3 extends React.Component {
 }
 
 // This function is used to pass the given img to the give uri by POST request.
-function sendPhoto(url, img) {
-  let data = {
-    user_id: user_id,
-    img: img
-  }
+function sendPhoto(img, id) {
+  var url
+  var data
+
+  if (id == -1) {
+    url = 'https://team5-nomadher-api.herokuapp.com/api/post_photo_id'
+    data = {
+      "user_id": user_id,
+      "photo_id_uri": 'data:image/png;base64,' + img,
+    }
+  } else {
+    url = 'https://team5-nomadher-api.herokuapp.com/api/post_poses'
+    data = {
+      "user_id": user_id,
+      "user_uploaded_img": 'data:image/png;base64,' + img,
+      "original_pose_id": id,
+    }
+  } 
 
   const request = new Request(url, {
     method: 'post',
@@ -672,7 +649,7 @@ function sendPhoto(url, img) {
       return res.json()
     })
     .then((jsonResult) => {
-      console.log('Result', jsonResult)
+      console.log(jsonResult)
     }).catch((error) => {
       console.log("An error occured with sending image", error)
     })
