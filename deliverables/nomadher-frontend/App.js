@@ -47,6 +47,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// Store the user id.
+var user_id;
+
 class Login extends React.Component {
 
   constructor(props) {
@@ -64,6 +67,8 @@ class Login extends React.Component {
         let data = {
           "user_id": user.providerData[0].uid
         }
+        // Update Global variable.
+        user_id = data.user_id
 
         const request = new Request(url, {
           method: 'post',
@@ -243,6 +248,9 @@ class emailLogin extends React.Component {
           let data = {
             "user_id": user.user.email
           }
+          // Update the glabal variable.
+          user_id = data.user_id
+
           console.log(data)
           const request = new Request(url, {
             method: 'post',
@@ -504,7 +512,9 @@ class TakePhotoCountDown0 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
+    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_photo_id', this.state.image_uri)
     this.props.navigation.navigate('photo0', { imageData: img.base64 })
+    
   }
 
   render() {
@@ -537,7 +547,9 @@ class TakePhotoCountDown1 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
+    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
     this.props.navigation.navigate('photo1', { imageData: img.base64 })
+    
   }
 
   render() {
@@ -570,6 +582,7 @@ class TakePhotoCountDown2 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
+    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
     this.props.navigation.navigate('photo2', { imageData: img.base64 })
   }
 
@@ -604,6 +617,7 @@ class TakePhotoCountDown3 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
+    sendPhoto('https://team5-nomadher-api.herokuapp.com/api/post_pose', this.state.image_uri)
     this.props.navigation.navigate('photo3', { imageData: img.base64 })
   }
 
@@ -617,6 +631,35 @@ class TakePhotoCountDown3 extends React.Component {
       </View>
     )
   }
+}
+
+// This function is used to pass the given img to the give uri by POST request.
+function sendPhoto(url, img) {
+  let data = {
+    user_id: user_id,
+    img: img
+  }
+
+  const request = new Request(url, {
+    method: 'post',
+    body:JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+  });
+
+  // Send the request.
+  fetch(request)
+    .then((res) => {
+      console.log('Image sent')
+      return res.json()
+    })
+    .then((jsonResult) => {
+      console.log('Result', jsonResult)
+    }).catch((error) => {
+      console.log("An error occured with sending image", error)
+    })
 }
 
 //============================== display your photo===============================
