@@ -261,58 +261,66 @@ class emailLogin extends React.Component {
 
   render() {
     return (
-      <Container style={{
-        flex: 1,
-        backgroundColor: '#fff',
-        justifyContent: 'center'
-      }}>
-        <Form>
+      // <ImageBackground style={{width: '100%', height: '100%'}}
+      // resizeMode='cover' 
+      // opacity={0.6}
+      // source={require('./assets/email.jpg')}>
+      //   <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+        <Container style={{
+          flex: 1,
+          justifyContent: 'center',
+          backgroundColor:'#ECE6FA'
+        }}>
+          <Form>
 
-          <Item floatingLabel style={{ marginTop: 50 }}>
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={(email) => this.setState({ email })}
-            />
-          </Item>
-
-
-          <Item floatingLabel style={{ marginBottom: 50 }}>
-            <Label>Password</Label>
-            <Input
-              secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={(password) => this.setState({ password })}
-
-            />
-          </Item>
+            <Item floatingLabel style={{ marginTop: 50 }}>
+              <Label>Email</Label>
+              <Input
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={(email) => this.setState({ email })}
+              />
+            </Item>
 
 
-          <Button
+            <Item floatingLabel style={{ marginBottom: 50 }}>
+              <Label textColor='black'>Password</Label>
+              <Input
+                secureTextEntry={true}
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={(password) => this.setState({ password })}
 
-            // variant = 'dark'
-            title='Login'
-            color='green'
-            onPress={() => this.logInUser(this.state.email, this.state.password, this)}
-          >
-
-          </Button>
-
-
-          <Button style={{ marginTop: 30 }}
-            rounded
-            full
-            title='Sign Up'
-            color='blue'
-            onPress={() => this.signUpUser(this.state.email, this.state.password)}
-          >
-          </Button>
-        </Form>
+              />
+            </Item>
 
 
-      </Container>
+            <Button
+
+              // variant = 'dark'
+              title='Login'
+              color='#0693E3'
+              onPress={() => this.logInUser(this.state.email, this.state.password, this)}
+            >
+
+            </Button>
+
+
+            <Button style={{ marginTop: 30 }}
+              rounded
+              full
+              title='Sign Up'
+              color='#4CAF50'
+              onPress={() => this.signUpUser(this.state.email, this.state.password)}
+            >
+            </Button>
+          </Form>
+
+        
+        </Container>
+      //   </View>
+      // </ImageBackground>
+
     )
   }
 
