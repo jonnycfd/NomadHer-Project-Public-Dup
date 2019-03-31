@@ -18,12 +18,12 @@ We also include a web app for administrators. NomadHer's administrators can use 
 
 
 ## Instructions
-Install Instruction:
+### Install Instruction:
 1. Uninstall the Facebook app on your Android device. 
 2. Download the apk file from https://drive.google.com/file/d/1zqRWqD60yS8PlQYLWNZSSu70fPkzmDYK/view?usp=sharing, and install the android app on your Android device. We also upload it onto our GitHub repo under folder "deliverables" as "nomader-frontend.apk". 
 3. For the first time using, it may take a longer time to build the APP.
 
-For the new external user:
+### For the new external user:
 1. The user can decide to use Facebook Login for Email Signup/Login.
 
     a. If the user chooses Facebook Login, press the "Login With Facebook" button, they need to type in the pre-created accounts and password. Please refer the account details below.
@@ -45,10 +45,8 @@ For the new external user:
 11. Now, your verification is under review. The admin can view the uploaded photo later. It may take up to 10 seconds to load the background image.
 
 
-For Admin:
-As an administrator of NomadHer, you can click on url: to get to the admin page.
-First, you will see the login page. You need to log in using an administrator account. (Account: admin@gmail.com Password: 123456)
-After the login is successful, you will be taken to the administrator page. You will see a list of all users on the left side of the page. You can click on any user and see the verification photos submitted by this user on the right side of the page.
-For each user, you can see three sets of pose photos (including the original pose photo and the corresponding photo taken by the user) and a photo ID photo on the right side. You should judge whether the user's photo is qualified, and then click on one of the three buttons below - Verify, Disqualify and Pending to update the status for the user. And for those photos that you think cannot be verified, you should also click deletePose or delete ID button to delete the photo, to wait for the user to upload a new photo later.
-
+### For Admin:
+1. As an administrator of NomadHer, you can click on url: to get to the admin page. First, you will see the login page. You need to log in using an administrator account. (Account: admin@gmail.com Password: 123456)
+2. After the login is successful, you will be taken to the administrator page. You will see a list of all users on the left side of the page. You can click on any user and see the verification photos submitted by this user on the right side of the page.
+3. For each user, you can see three sets of pose photos (including the original pose photo and the corresponding photo taken by the user) and a photo ID photo on the right side. You should judge whether the user's photo is qualified, and then click on one of the three buttons below - Verify, Disqualify and Pending to update the status for the user. And for those photos that you think cannot be verified, you should also click deletePose or delete ID button to delete the photo, to wait for the user to upload a new photo later.
 
