@@ -1,6 +1,5 @@
 <template>
   <div class="user-list">
-
     <li v-for="user in userList">
       <button v-on:click="setUserId(user.userID)">{{ user.userID }}</button>
     </li>
@@ -27,19 +26,18 @@ export default {
 
   },
   mounted: function () {
-      var jsonstr = "[]"
-      var jsonarr = eval('('+jsonstr+')')
+      let vm = this;
       const users_ref = db.collection("users").onSnapshot(function(snapshot){
-      const userListLen = snapshot.docs.length;
-      for (var i = 0; i < userListLen; i++){
-          var newID = {"userID":snapshot.docs[i].id}
-          jsonarr.push(newID)
+          let jsonarr = [];
+          const myObject = snapshot;
+          const userListLen = myObject.docs.length;
+          for (var i = 0; i < userListLen; i++){
+              var newID = {"userID":myObject.docs[i].id}
+              jsonarr.push(newID)
 
-      }
+          }
+          vm.userList = jsonarr
       });
-
-      this.userList = jsonarr
-      console.log(this.userList)
   }
 }
 </script>
