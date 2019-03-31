@@ -39,7 +39,7 @@ def check_pending(user_id):
     """
     users_ref = db.collection('users')
     docs = users_ref.document(user_id).get().to_dict()
-    if docs["verified"] is not "False":
+    if docs["verified"] != "False":
         return
     else:
         users_ref.document(user_id).update({"verified" : "Pending"})
