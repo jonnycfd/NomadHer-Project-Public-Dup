@@ -1,7 +1,6 @@
 <template>
   <div class="header">
-    <div>This is a Header</div>
-      <!-- TODO -->
+	<div>Welcome to NomadHer Admin Page!</div>
   </div>
 </template>
 
@@ -13,6 +12,10 @@ export default {
 
 <style scoped>
 .header {
-  border: solid black 1px;
+  border: solid rgb(169, 247, 159) 5px;
+  background-color:ivory;
+  font-size: 30px;
+  border-radius: 10px;
+  width: 1885px;
 }
 </style>
