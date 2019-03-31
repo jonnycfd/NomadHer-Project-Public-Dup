@@ -50,6 +50,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Store the user id.
 var user_id;
+var pose_id;
 
 class Login extends React.Component {
 
@@ -340,14 +341,18 @@ class SampleImage1 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: ""
     };
   }
 
   componentDidMount() {
     fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -363,7 +368,7 @@ class SampleImage1 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown1')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown1', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -378,14 +383,18 @@ class SampleImage2 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: ""
     };
   }
 
   componentDidMount() {
     fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -401,7 +410,7 @@ class SampleImage2 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown2')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown2', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -415,14 +424,18 @@ class SampleImage3 extends React.Component {
     super(props);
 
     this.state = {
-      image: "",
+      image: ""
     };
   }
 
   componentDidMount() {
     fetch(`https://team5-nomadher-api.herokuapp.com/api/get_pose/${user_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ image: data.image_uri }));
+      .then((data) => {
+        pose_id = data.original_pose_id
+        this.setState({ image: data.image_uri })
+        console.log("testttttttttt", pose_id)
+      });
   }
 
 
@@ -438,7 +451,7 @@ class SampleImage3 extends React.Component {
         />
 
         <Button title="take photo"
-          onPress={() => this.props.navigation.navigate('takePhotoCountDown3')}
+          onPress={() => this.props.navigation.navigate('takePhotoCountDown3', {pose_id: this.state.pose_id})}
         />
 
       </View>
@@ -501,7 +514,8 @@ class TakePhotoCountDown1 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto(this.state.image_uri, 1)
+    console.log(pose_id);
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo1', { imageData: img.base64 })
     
   }
@@ -536,7 +550,7 @@ class TakePhotoCountDown2 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto(this.state.image_uri, 2)
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo2', { imageData: img.base64 })
   }
 
@@ -571,7 +585,7 @@ class TakePhotoCountDown3 extends React.Component {
   processImg = img => {
     this.state.image_uri = img.base64
     this.setState({ takePhoto: false })
-    sendPhoto(this.state.image_uri, 3)
+    sendPhoto(this.state.image_uri, pose_id)
     this.props.navigation.navigate('photo3', { imageData: img.base64 })
   }
 
@@ -588,11 +602,11 @@ class TakePhotoCountDown3 extends React.Component {
 }
 
 // This function is used to pass the given img to the give uri by POST request.
-function sendPhoto(img, pose_id) {
+function sendPhoto(img, id) {
   var url
   var data
 
-  if (pose_id == -1) {
+  if (id == -1) {
     url = 'https://team5-nomadher-api.herokuapp.com/api/post_photo_id'
     data = {
       "user_id": user_id,
@@ -603,11 +617,9 @@ function sendPhoto(img, pose_id) {
     data = {
       "user_id": user_id,
       "user_uploaded_img": 'data:image/png;base64,' + img,
-      "original_pose_id": pose_id,
+      "original_pose_id": id,
     }
   } 
-
-  console.log(data);
 
   const request = new Request(url, {
     method: 'post',
@@ -621,8 +633,6 @@ function sendPhoto(img, pose_id) {
   // Send the request.
   fetch(request)
     .then((res) => {
-      console.log('start 777')
-      // console.log(res)
       console.log('Image sent')
       return res.json()
     })
