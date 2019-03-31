@@ -165,34 +165,50 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}>
-        <SocialIcon
-          title='Login With Facebook'
-          button
-          type='facebook'
-          full
-          onPress={() => this.loginWithFacebook()}
-        />
+      <ImageBackground style={{width: '100%', height: '100%'}}
+      resizeMode='cover' 
+      opacity={0.9}
+      source={require('./assets/login2.jpg')}>
+        <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={{position: 'absolute', top: 130, left: 85,
+        fontStyle: 'italic',
+        fontSize: 50, fontWeight:'bold', color:'cadetblue', 
+        fontFamily: 'notoserif',textShadowColor:'yellow', 
+        includeFontPadding:true}}>NoMadHer</Text>
+          <SocialIcon
+            title='  Login With Facebook  '
+            button
+            type='facebook'
+            full
+            reverse
+            onPress={() => this.loginWithFacebook()}
+          />
 
-        <SocialIcon
-          title='Login/Sign up With Email'
-          button
-          type='envelope'
-          full
-          onPress={() => this.props.navigation.navigate('emailLogin')}
-        />
-        {/* <SocialIcon
-          title='Login With Google'
-          button
-          type='google-plus-official'
-          full
-          onPress={() => this.signInWithGoogleAsync()}
-        /> */}
-      </View>
+          <SocialIcon
+            title='  Login/Sign up With Email  '
+            button
+            type='envelope'
+            full
+            reverse
+            onPress={() => this.props.navigation.navigate('emailLogin')}
+          />
+          {/* <SocialIcon
+            title='Login With Google'
+            button
+            type='google-plus-official'
+            full
+            onPress={() => this.signInWithGoogleAsync()}
+          /> */}
+        </View>
+      </ImageBackground>
+
+      // <ImageBackground style={{width: '100%', height: '100%'}}
+      // resizeMode='cover' 
+      // source={require('../assets/pending.jpg')}>
+      //   <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+      //    <Text style={{textAlign: 'center', fontSize: 25, fontWeight:'bold', color:'green'}}>Your verification is under review</Text>
+      //   </View>
+      // </ImageBackground>
 
 
     );
