@@ -49,9 +49,10 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   width:100%;
-  height:1080px;
-  background-size:2000px, 1120px;
+  height:100vh;
+  background-size:100%, 100%;
   border-radius: 10px;
+  background-position:top;
 }
 
 #loginButton {

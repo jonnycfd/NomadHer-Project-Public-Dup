@@ -16,6 +16,6 @@ export default {
   background-color:ivory;
   font-size: 30px;
   border-radius: 10px;
-  width: 1885px;
+  width: 100%;
 }
 </style>
