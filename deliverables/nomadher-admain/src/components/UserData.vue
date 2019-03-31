@@ -12,24 +12,24 @@
         <td>Pose 1</td>
         <td><img id='pose1original' height='150' width='150'></td> 
         <td><img id='pose1userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, 1)">deletePose</button></td>
+        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '1')">deletePose</button></td>
       </tr>
       <tr>
         <td>Pose 2</td>
         <td><img id='pose2original' height='150' width='150'></td> 
         <td><img id='pose2userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, 2)">deletePose</button></td>
+        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '2')">deletePose</button></td>
       </tr>
       <tr>
         <td>Pose 3</td>
         <td><img id='pose3original' height='150' width='150'></td> 
         <td><img id='pose3userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, 3)">deletePose</button></td>
+        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '3')">deletePose</button></td>
       </tr>
       <tr>
         <td>Photo ID</td>
         <td><img id='photoid' height='220' width='350'></td> 
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName)">deletePose</button></td>
+        <td><button v-if="userName != 'null'" v-on:click="deletePhotoId(userName)">delete ID</button></td>
       </tr>
     </table>
     <button v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'True')">Verify</button>
