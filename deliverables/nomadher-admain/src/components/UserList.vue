@@ -1,7 +1,7 @@
 <template>
   <div class="user-list">
-    <li v-for="user in userList">
-      <button v-on:click="setUserId(user.userID)">{{ user.userID }}</button>
+    <li style="list-style: none" v-for="user in userList">
+      <button class="userbutton" v-on:click="setUserId(user.userID)">{{ user.userID }}</button>
     </li>
 
   </div>
@@ -44,6 +44,35 @@ export default {
 
 <style scoped>
 .user-list {
-  border: solid black 1px;
+  float: left;
+  width: 10vh;
+  height: 100vh;
+  overflow-y: scroll;
+
+}
+
+.userbutton {
+  border:solid #ff7675 6px;
+  border-bottom: solid #ff7675 3px;
+  border-top: solid #ff7675 3px;
+  background: white;
+  width:100%;
+  height: 8vh;
+  font-size: 20px;
+  color: #636e72;
+  transition: all 0.5s;
+  overflow:auto;
+  text-align:center;
+}
+
+.userbutton:hover{
+  background:#fab1a0;
+  font-size: 22px;
+
+}
+.userbutton:focus {
+  background:#fab1a0; 
+  color:white;
+  font-size: 22px;
 }
 </style>

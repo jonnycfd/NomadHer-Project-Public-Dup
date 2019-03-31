@@ -23,6 +23,13 @@ import router from '../router'
 
 export default {
   name: 'login',
+  data: function(){
+    return {
+      message1: null,
+      message2: null,
+    }
+
+  },
   methods: {
     ...mapActions(['setLogin']),
     verifyLogin() {

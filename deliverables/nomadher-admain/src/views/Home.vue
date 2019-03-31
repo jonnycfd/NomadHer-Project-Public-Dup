@@ -21,13 +21,14 @@ export default {
 
 <style scoped>
 .user-list {
-  width: calc(30% - 2px);
+  width: calc(30vh - 2px);
   height: 90vh;
   float: left;
 }
 .user-data {
-  width: calc(70% - 2px);
+  width: 70%;
   height: 90vh;
   float: left;
+  position:relative;
 }
 </style>

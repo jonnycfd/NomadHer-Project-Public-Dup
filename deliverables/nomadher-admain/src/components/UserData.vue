@@ -1,5 +1,6 @@
 <template>
   <div class="user-data" id="user-data">
+    <div v-if="userName == 'null'">Please select one user from the user list at left.</div>
     <div v-if="userName != 'null'">{{this.userName}}</div>
     <!-- TODO: (Step3) Write HTML to display six images -->
     <table style="width:100%" v-if="userName != 'null'">  
@@ -12,30 +13,30 @@
         <td>Pose 1</td>
         <td><img id='pose1original' height='150' width='150'></td> 
         <td><img id='pose1userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '1')">deletePose</button></td>
+        <td><button class="verifybutton" v-if="userName != 'null'" v-on:click="deletePose(userName, '1')">deletePose</button></td>
       </tr>
       <tr>
         <td>Pose 2</td>
         <td><img id='pose2original' height='150' width='150'></td> 
         <td><img id='pose2userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '2')">deletePose</button></td>
+        <td><button class="verifybutton" v-if="userName != 'null'" v-on:click="deletePose(userName, '2')">deletePose</button></td>
       </tr>
       <tr>
         <td>Pose 3</td>
         <td><img id='pose3original' height='150' width='150'></td> 
         <td><img id='pose3userupload' height='150' width='150'></td>
-        <td><button v-if="userName != 'null'" v-on:click="deletePose(userName, '3')">deletePose</button></td>
+        <td><button class="verifybutton" v-if="userName != 'null'" v-on:click="deletePose(userName, '3')">deletePose</button></td>
       </tr>
       <tr>
         <td>Photo ID</td>
         <td><img id='photoid' height='220' width='350'></td> 
-        <td><button v-if="userName != 'null'" v-on:click="deletePhotoId(userName);">delete ID</button></td>
+        <td><button class="verifybutton" v-if="userName != 'null'" v-on:click="deletePhotoId(userName);">delete ID</button></td>
       </tr>
     </table>
-    <button v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'True')">Verify</button>
-    <button v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'False')">Disqualify</button>
-    <button v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'Pending')">Pending</button>
-    
+    <button class="verifybutton" v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'True'); userState = 'Verified'">Verified</button>
+    <button class="verifybutton" v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'False'); userState = 'Disqualify'">Disqualify</button>
+    <button class="verifybutton" v-if="userName != 'null'" v-on:click="modifyUserState(userName, 'Pending'); userState = 'Pending'">Pending</button>
+    <div v-if="userName != 'null'">Current State: {{this.userState}}</div>
     <!-- TODO: Create buttons to trigger functions to edit database -->
     <!-- Example: start -->
     <!-- <button v-if="userName != 'null'" v-on:click="deletePhotoId('user98')">deletePhotoId</button>
@@ -57,6 +58,7 @@ export default {
   data: function() {
       return {
           userName: null,
+          userState: null,
         // TODO: (Step2) Create variables and store image data here
       }
   },
@@ -70,6 +72,7 @@ export default {
   },
   watch:{
       getCurrentUser(user) {
+          let vm = this;
           this.userName = user;
           // TODO (Step1)
           // 1.连接数据库，获取当前用户信息（三组照片和身份证照片）
@@ -117,6 +120,15 @@ export default {
                     photoidElement.src = doc.data()["this_users_photoID"];
                   }
 
+                  if (doc.data()["verified"] == 'True') {
+                    vm.userState = 'Verified'
+                  }
+                  if (doc.data()["verified"] == 'False') {
+                    vm.userState = 'Disqualify'
+                  }
+                  if (doc.data()["verified"] == 'Pending') {
+                    vm.userState = 'Pending'
+                  }
 
                   const poseRef = db.collection("pose").doc("poseList");
                   const promise2 = poseRef.get().then(function(doc) {
@@ -166,6 +178,27 @@ export default {
 
 <style scoped>
 .user-data {
-  border: solid black 1px;
+  background-color:white;
 }
+
+.verifybutton {
+  border:solid #ff7675 2px;
+  border-radius:8px;
+  background: white;
+  width:110px;
+  height: 30px;
+  font-size: 16px;
+  color: #636e72;
+  transition: all 0.5s;
+  overflow:auto;
+  text-align:center;
+}
+
+.verifybutton:hover{
+  background:#fab1a0;
+}
+
+/* .verifybutton:focus{
+  background: #fab1a0;
+} */
 </style>

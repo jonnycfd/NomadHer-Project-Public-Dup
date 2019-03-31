@@ -12,10 +12,14 @@ export default {
 
 <style scoped>
 .header {
-  border: solid rgb(169, 247, 159) 5px;
-  background-color:ivory;
+  border: solid #ff7675 5px;
+  background-color: #fab1a0;
   font-size: 30px;
-  border-radius: 10px;
+  border-radius: 0px;
   width: 100%;
+  text-align:center;
+  padding:0px;  
+  transition:all 0.5s;
 }
+
 </style>
