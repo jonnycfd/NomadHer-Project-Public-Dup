@@ -34,7 +34,7 @@ export default {
     ...mapActions(['setLogin']),
     verifyLogin() {
       // TODO: verify the Username and Password
-      if (this.message1 == "1" && this.message2 == "1") { 
+      if (this.message1 == "admin@gmail.com" && this.message2 == "123456") { 
         this.setLogin();
         router.push({ name: "home" });
       }
