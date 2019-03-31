@@ -9,17 +9,17 @@ Database usage example:
 # docker
 To start:
 
-`docker build -t d2-301 .`
+`docker build -t d3-301 .`
 
-`docker run -d --name d2-301-container -p 80:80 d2-301:latest`
+`docker run -d --name d3-301-container -p 80:80 d3-301:latest`
 
-`docker start d2-301-container`
+`docker start d3-301-container`
 
 To stop/remove container:
 
-`docker stop d2-301-container`
+`docker stop d3-301-container`
 
-`docker rm d2-301-container`
+`docker rm d3-301-container`
 
 # heroku
 `heroku login`
