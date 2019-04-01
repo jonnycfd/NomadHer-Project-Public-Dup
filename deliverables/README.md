@@ -30,11 +30,11 @@ We also include a web app for administrators. NomadHer's administrators can use 
     
     b. If the user chooses Email Sign up/ Login, press the "Login/Sign up With Email" button, they need to sign up an account first.And then he can login.
     
-    I. Type in your email and password. The password must be at least 8 characters.
+    &nbsp;&nbsp;&nbsp;&nbsp;I. Type in your email and password. The password must be at least 8 characters.
    
-    II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
+    &nbsp;&nbsp;&nbsp;&nbsp;II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
     
-    III. Press "Login" button to login.
+    &nbsp;&nbsp;&nbsp;&nbsp;III. Press "Login" button to login.
 
 2. After Login it may take up to 10 seconds to navigate to the next screen.
 3. On this page, there is a "Verify" Button at the center of your screen. Before Press this button, please prepare your photo ID with you and then press this button to navigate to next screen. And it may take up to 10 seconds to load the background image.
@@ -52,3 +52,17 @@ We also include a web app for administrators. NomadHer's administrators can use 
 1. As an administrator of NomadHer, you can click on url:https://team5-nomadher-admin.herokuapp.com/ to get to the admin page. First, you will see the login page. You need to log in using an administrator account. (Account: admin@gmail.com Password: 123456)
 2. After the login is successful, you will be taken to the administrator page. You will see a list of all users on the left side of the page. You can click on any user and see the verification photos submitted by this user on the right side of the page.
 3. For each user, you can see three sets of pose photos (including the original pose photo and the corresponding photo taken by the user) and a photo ID photo on the right side. You should judge whether the user's photo is qualified, and then click on one of the three buttons below - Verify, Disqualify and Pending to update the status for the user. And for those photos that you think cannot be verified, you should also click deletePose or delete ID button to delete the photo, to wait for the user to upload a new photo later.
+
+
+### Facebook Test Accounts
+1. Verified User:   
+	UserID: true_zkgldnw_user@tfbnw.net   
+	Password: csc301   
+
+2. Unverified User:   
+	UserID: false_mpbehao_user@tfbnw.net   
+	Password: csc301   
+
+3. Pending User:   
+	UserID: pending_wymzmlo_user@tfbnw.net   
+	Password: csc301   
