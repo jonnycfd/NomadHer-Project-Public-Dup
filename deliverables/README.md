@@ -29,9 +29,12 @@ We also include a web app for administrators. NomadHer's administrators can use 
     a. If the user chooses Facebook Login, press the "Login With Facebook" button, they need to type in the pre-created accounts and password. Please refer the account details below.
     
     b. If the user chooses Email Sign up/ Login, press the "Login/Sign up With Email" button, they need to sign up an account first.And then he can login.
-    <br \>I. Type in your email and password. The password must be at least 8 characters.
-    <br \>II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
-    <br \>III. Press "Login" button to login.
+    
+    I. Type in your email and password. The password must be at least 8 characters.
+   
+    II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
+    
+    III. Press "Login" button to login.
 
 2. After Login it may take up to 10 seconds to navigate to the next screen.
 3. On this page, there is a "Verify" Button at the center of your screen. Before Press this button, please prepare your photo ID with you and then press this button to navigate to next screen. And it may take up to 10 seconds to load the background image.
