@@ -46,7 +46,7 @@ We also include a web app for administrators. NomadHer's administrators can use 
 
 
 ### For Admin:
-1. As an administrator of NomadHer, you can click on url: to get to the admin page. First, you will see the login page. You need to log in using an administrator account. (Account: admin@gmail.com Password: 123456)
+1. As an administrator of NomadHer, you can click on url:https://team5-nomadher-admin.herokuapp.com/ to get to the admin page. First, you will see the login page. You need to log in using an administrator account. (Account: admin@gmail.com Password: 123456)
 2. After the login is successful, you will be taken to the administrator page. You will see a list of all users on the left side of the page. You can click on any user and see the verification photos submitted by this user on the right side of the page.
 3. For each user, you can see three sets of pose photos (including the original pose photo and the corresponding photo taken by the user) and a photo ID photo on the right side. You should judge whether the user's photo is qualified, and then click on one of the three buttons below - Verify, Disqualify and Pending to update the status for the user. And for those photos that you think cannot be verified, you should also click deletePose or delete ID button to delete the photo, to wait for the user to upload a new photo later.
 
