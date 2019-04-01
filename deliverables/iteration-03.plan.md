@@ -123,7 +123,7 @@ A schedule is important to our team. We will make up the schedule for each weekâ
 
 #### Deployment and Github Workflow
 
-
+##### Github Workflow
 1. We created a new branch, nomadher-admin (used to implement  a separate Web application for the administrators to manually verify users).
 
 2. Everyone work on the frontend checkout to nomadher-frontend. And everyone work on the administrator's web application (In D2 those members are responsible for the backend) checkout to nomadher-admin.
@@ -137,9 +137,11 @@ A schedule is important to our team. We will make up the schedule for each weekâ
 6. After we tested code on branch "nomadher-frontend" or "nomadher-admin", we merged these two branches into master and did the final test.
 
 
-Deployment process: In backend we are using flask app. We used Docker and Heroku to deploy our backend. Related steps include:
+##### Deployment process: 
 
-##### dockerï¼š
+In backend we are using flask app. We used Docker and Heroku to deploy our backend. Related steps include:
+
+###### dockerï¼š
 To start:
 `docker build -t d3-301 .`
 
@@ -152,7 +154,7 @@ To stop/remove container:
 
 `docker rm d3-301-container`
 
-##### heroku:
+###### heroku:
 `heroku login`
 
 `heroku create --app <app-server-name>`
@@ -179,11 +181,12 @@ In order to accomplish this goal, we have the following tasks to do: 1. Implemen
 
 #### Artifacts
 
-We will use UML to design the structure of the program, so the team members can understand different components exist in the program.
-
-UI design: We will draw the different frames of the mobile app on paper before we actually implement them, to make sure they are good-looking and capable of interacting with each other smoothly and reasonably.
-
 As the front-end team keeps developing on React-native mobile application, the admin Web application team used a brand new javascript framework Vue.js to create a lightweight Web application. This application can be accessed directly on web browser, after a successful login administrators can view each userâ€™s uploaded photo ID and pose photos, verify or disqualify users, as well as deleting their uploaded pose photos. 
+
+For UI design, we will draw the different frames of the mobile app on paper before we actually implement them, to make sure they are good-looking and capable of interacting with each other smoothly and reasonably.
+
+And we will use UML to design the structure of the program, so the team members can understand different components exist in the program.
+
 
 
 
