@@ -135,8 +135,9 @@ class Login extends React.Component {
         <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={{position: 'absolute', top: 130, left: 85,
         fontStyle: 'italic',
-        fontSize: 50, fontWeight:'bold', color:'cadetblue', 
-        fontFamily: 'notoserif',textShadowColor:'yellow', 
+        backgroundColor:'#FCF8E2',
+        fontSize: 50, fontWeight:'bold', color:'#00bcd4', 
+        textShadowColor:'yellow', 
         includeFontPadding:true}}>NoMadHer</Text>
           <SocialIcon
             title='  Login With Facebook  '

@@ -64,7 +64,9 @@ Weakness: 1. Do not have experience on React Native framework. 2. Do not have ex
 ##### Lixuan Luo:
 Role: Programmer, Tester and Designer (front end)
 
-Responsibilities: Design and implement the navigation flow for the application front-end and user interface beautification based on requests from nomadher side.
+Responsibilities: 1. Design the UI style for login page, verification page, pending page and user interface beautification based on requests from nomadher side. <br />
+2. Finish the implementation of 4 image verification page.
+
 
 Strength: 1. Experienced with web development(JS, Python) 2. Familiar with JAVA and database design and implementation. 3. Interested and have experience in UI/UX design. 4. Good at communication.
 
