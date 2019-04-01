@@ -20,7 +20,7 @@ We also include a web app for administrators. NomadHer's administrators can use 
 ## Instructions
 ### Install Instruction:
 1. Uninstall the Facebook app on your Android device. 
-2. Download the apk file from https://drive.google.com/file/d/1zqRWqD60yS8PlQYLWNZSSu70fPkzmDYK/view?usp=sharing, and install the android app on your Android device. We also upload it onto our GitHub repo under folder "deliverables" as "nomader-frontend.apk". 
+2. Download the apk file from https://expo.io/artifacts/b8a0a127-533d-463f-beb3-65dda6270450, and install the android app on your Android device. We also upload it onto our GitHub repo under folder "deliverables" as "nomader-frontend.apk". 
 3. For the first time using, it may take a longer time to build the APP.
 
 ### For the new external user:
