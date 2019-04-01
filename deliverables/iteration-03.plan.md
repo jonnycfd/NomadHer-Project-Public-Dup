@@ -73,7 +73,8 @@ Weakness: 1. Do not have experience with React Native framework. 2. Limited know
 ##### Zidong Xie:
 Role: Programmer and Tester (back end & Web application)
 
-Responsibilities:  (For iteration 3) 自己写
+Responsibilities: 1. Create a vue project and write starting code for nomadher-admin pages.
+2. Deploy the vue project on github.
 
 Strength: 1. Experienced with web frontend and backend design. 2. Familiar with some web frameworks such as Vue and Flask 3. knowledged on common used database such as MySQL and MongoDB.
 
