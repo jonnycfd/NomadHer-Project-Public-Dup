@@ -30,11 +30,11 @@ We also include a web app for administrators. NomadHer's administrators can use 
     
     b. If the user chooses Email Sign up/ Login, press the "Login/Sign up With Email" button, they need to sign up an account first.And then he can login.
     
-    I. Type in your email and password. The password must be at least 8 characters.
+    &nbsp;&nbsp;&nbsp;&nbsp;I. Type in your email and password. The password must be at least 8 characters.
    
-    II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
+    &nbsp;&nbsp;&nbsp;&nbsp;II. Press the "Sign Up" button. If the sign up is successful, you will get an alert.
     
-    III. Press "Login" button to login.
+    &nbsp;&nbsp;&nbsp;&nbsp;III. Press "Login" button to login.
 
 2. After Login it may take up to 10 seconds to navigate to the next screen.
 3. On this page, there is a "Verify" Button at the center of your screen. Before Press this button, please prepare your photo ID with you and then press this button to navigate to next screen. And it may take up to 10 seconds to load the background image.
